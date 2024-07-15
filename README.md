@@ -1,1 +1,93 @@
-# mlr3inference
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# mlr3inference <img src="man/figures/logo_orig.png" align="right" height="139" />
+
+Statistical inference methods for {mlr3}.
+
+Package website: [dev](https://mlr3inference.mlr-org.com/dev/)
+
+<!-- badges: start -->
+
+[![RCMD
+Check](https://github.com/mlr-org/mlr3inference/actions/workflows/rcmdcheck.yaml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/rcmdcheck.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/mlr3inference)](https://CRAN.R-project.org/package=mlr3inference)
+[![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+[![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
+<!-- badges: end -->
+
+## Installation
+
+``` r
+pak::pkg_install("mlr-org/mlr3inference")
+```
+
+## What is `mlr3inference`?
+
+The main purpose of the package is to allow to obtain confidence
+intervals for the generalization error for a number of resampling
+methods. Below, we evaluate a decision tree on the sonar task using a
+holdout resampling and obtain a confidence interval for the
+generalization error. This is achieved using the `msr("ci.holdout")`
+measure, to which we pass another `mlr3::Measure` that determines the
+loss function.
+
+``` r
+library(mlr3inference)
+
+rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
+ci = msr("ci.holdout", "classif.acc")
+rr$aggregate(ci)
+#>       classif.acc classif.acc.lower classif.acc.upper 
+#>         0.6086957         0.4926975         0.7246938
+```
+
+It is also possible to select the default inference method for a certain
+`Resampling` method using `msr("ci")`
+
+``` r
+ci_default = msr("ci", "classif.acc")
+rr$aggregate(ci_default)
+#>       classif.acc classif.acc.lower classif.acc.upper 
+#>         0.6086957         0.4926975         0.7246938
+```
+
+> \[!NOTE\]  
+> \* Not for every resampling method exists an inference method. \*
+> There are combinations of datasets and learners, where inference
+> methods can fail. \* Confidence Intervals can only be obtained for
+> measures that are based on pointwise loss functions, i.e. have an
+> `$obs_loss` field.
+
+## Features
+
+- Additional Resampling Methods
+- Confidence Intervals for the Generalization Error for some resampling
+  methods
+
+## Inference Methods
+
+| Key         | Label             | Resamplings                  |
+|:------------|:------------------|:-----------------------------|
+| ci.con_z    | Conservative-Z CI | ResamplingPairedSubsampling  |
+| ci.cor_t    | Corrected-T CI    | ResamplingSubsampling        |
+| ci.holdout  | Holdout CI        | ResamplingHoldout            |
+| ci.naive_cv | Naive CV CI       | ResamplingCV , ResamplingLOO |
+| ci.ncv      | Nested CV CI      | ResamplingNestedCV           |
+
+## Bugs, Questions, Feedback
+
+*mlr3torch* is a free and open source software project that encourages
+participation and feedback. If you have any issues, questions,
+suggestions or feedback, please do not hesitate to open an “issue” about
+it on the GitHub page!
+
+In case of problems / bugs, it is often helpful if you provide a
+“minimum working example” that showcases the behaviour (but don’t worry
+about this if the bug is obvious).
+
+Please understand that the resources of the project are limited:
+response may sometimes be delayed by a few days, and some feature
+suggestions may be rejected if they are deemed too tangential to the
+vision behind the project.

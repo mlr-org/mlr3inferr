@@ -1,0 +1,43 @@
+Package: mlr3inference
+Title: Inference on the Generalisation Error
+Version: 0.0.0.9000
+Authors@R: 
+    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+Depends:
+    R (>= 3.1.0),
+	mlr3
+Imports:
+	data.table,
+	mlr3misc,
+	paradox,
+	checkmate,
+	lgr,
+	R6
+Remotes:
+	mlr-org/mlr3@feat/loss_funs,
+	mlr-org/mlr3measures@feat/trafo
+License: LGPL-3
+URL: https://mlr3inference.mlr-org.com, https://github.com/mlr-org/mlr3inference
+BugReports: https://github.com/mlr-org/mlr3inference/issues
+Encoding: UTF-8
+NeedsCompilation: no
+Roxygen: list(markdown = TRUE, r6 = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Collate: 
+    'aaa.R'
+    'MeasureAbstractCi.R'
+    'MeasureCi.R'
+    'MeasureCiConZ.R'
+    'MeasureCiCorT.R'
+    'MeasureCiHoldout.R'
+    'MeasureCiNaiveCV.R'
+    'MeasureCiNestedCV.R'
+    'ResamplingNestedCV.R'
+    'ResamplingPairedSubsampling.R'
+    'bibentries.R'
+    'zzz.R'
