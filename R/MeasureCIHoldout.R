@@ -37,4 +37,5 @@ MeasureCiHoldout = R6Class("MeasureCiHoldout",
   )
 )
 
+#' @include aaa.R
 measures[["ci.holdout"]] = list(MeasureCiHoldout, .prototype_args = list(measure = "classif.acc"))

@@ -40,7 +40,7 @@ rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
 ci = msr("ci.holdout", "classif.acc")
 rr$aggregate(ci)
 #>       classif.acc classif.acc.lower classif.acc.upper 
-#>         0.6086957         0.4926975         0.7246938
+#>         0.7391304         0.6347628         0.8434981
 ```
 
 It is also possible to select the default inference method for a certain
@@ -50,7 +50,7 @@ It is also possible to select the default inference method for a certain
 ci_default = msr("ci", "classif.acc")
 rr$aggregate(ci_default)
 #>       classif.acc classif.acc.lower classif.acc.upper 
-#>         0.6086957         0.4926975         0.7246938
+#>         0.7391304         0.6347628         0.8434981
 ```
 
 > \[!NOTE\]  

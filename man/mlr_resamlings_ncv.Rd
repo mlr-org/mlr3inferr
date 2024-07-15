@@ -26,9 +26,9 @@ The number of repetitions.
 }
 
 \examples{
-ncv = rsmp("nested_cv", folds = 2, repeats = 10L)
+ncv = rsmp("nested_cv", folds = 3, repeats = 10L)
 ncv
-rr = resample(tsk("mtcars"), lrn("classif.featureless"), ncv)
+rr = resample(tsk("mtcars"), lrn("regr.featureless"), ncv)
 }
 \references{
 Bates, Stephen, Hastie, Trevor, Tibshirani, Robert (2024).

@@ -16,7 +16,7 @@
 #' @examples
 #' m_naivecv = msr("ci.naive_cv", "classif.ce")
 #' m_naivecv
-#' rr = resample(tsk("sonar"), lrn("classif.featureless"), m_naivecv)
+#' rr = resample(tsk("sonar"), lrn("classif.featureless"), rsmp("cv"))
 #' rr$aggregate(m_naivecv)
 MeasureCiNaiveCV = R6Class("MeasureCiNaiveCV",
   inherit = MeasureAbstractCi,
@@ -59,4 +59,5 @@ MeasureCiNaiveCV = R6Class("MeasureCiNaiveCV",
   )
 )
 
+#' @include aaa.R
 measures[["ci.naive_cv"]] = list(MeasureCiNaiveCV, .prototype_args = list(measure = "classif.acc"))

@@ -3,11 +3,16 @@
 #' @import data.table
 #' @import mlr3misc
 #' @importFrom R6 R6Class is.R6
+#' @importFrom stats qnorm qt sd var
 #' @import mlr3
 "_PACKAGE"
 
 register_mlr3 = function(...) {
   assign("lg", lgr::get_logger("mlr3"), envir = parent.env(environment()))
+  # static checker
+  future::plan
+  withr::with_seed
+
   if (Sys.getenv("IN_PKGDOWN") == "true") {
     lg$set_threshold("warn")
   }

@@ -42,10 +42,10 @@ navbar:
 reference:
 - title: Inference Methods
   contents:
-    - starts_with("mlr_pipeops")
+    - starts_with("mlr_measure_ci")
 - title: Resampling Methods
   contents:
-    - starts_with("mlr_tasks")
+    - starts_with("mlr_resamplings")
 - title: Package
   contents:
     - mlr3inference-package

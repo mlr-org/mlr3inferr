@@ -11,10 +11,10 @@
 #'   The desired alpha level.
 #' @export
 #' @examples
-#' rr = resample(tsk("sonar"), rsmp("classif.featureless"), rsmp("holdout"))
+#' rr = resample(tsk("sonar"), lrn("classif.featureless"), rsmp("holdout"))
 #' rr$aggregate(msr("ci", "classif.acc"))
 #' # is the same as:
-#' rr$aggregate(msr("ci.holdout", "classif.acc")
+#' rr$aggregate(msr("ci.holdout", "classif.acc"))
 MeasureCi = R6Class("Measure",
   inherit = MeasureAbstractCi,
   public = list(
@@ -43,4 +43,5 @@ MeasureCi = R6Class("Measure",
   )
 )
 
+#' @include aaa.R
 measures[["ci"]] = list(MeasureCi, .prototype_args = list(measure = "classif.acc"))

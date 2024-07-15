@@ -22,10 +22,8 @@
 #' `r format_bib("nadeau1999inference")`
 #' @export
 #' @examples
-#' # cheap parameterization to run quickly:
-#' pw_subs = rsmp("paired_subsampling", repeats_in = 2, repeats_out = 3L)
+#' pw_subs = rsmp("paired_subsampling")
 #' pw_subs
-#' rr = resample(tsk("sonar"), lrn("classif.featureless"), pw_subs)
 ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
   inherit = mlr3::Resampling,
   public = list(
@@ -149,4 +147,5 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
   )
 )
 
+#' @include aaa.R
 resamplings[["paired_subsampling"]] = ResamplingPairedSubsampling

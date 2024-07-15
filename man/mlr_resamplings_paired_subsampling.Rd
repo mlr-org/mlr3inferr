@@ -30,10 +30,8 @@ The proportion of data to use for training.
 }
 
 \examples{
-# cheap parameterization to run quickly:
-pw_subs = rsmp("paired_subsampling", repeats_in = 2, repeats_out = 3L)
+pw_subs = rsmp("paired_subsampling")
 pw_subs
-rr = resample(tsk("sonar"), lrn("classif.featureless"), pw_subs)
 }
 \references{
 Nadeau, Claude, Bengio, Yoshua (1999).

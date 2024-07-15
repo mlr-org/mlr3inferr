@@ -55,4 +55,5 @@ MeasureCiConZ = R6Class("MeasureCiConZ",
   )
 )
 
+#' @include aaa.R
 measures[["ci.con_z"]] = list(MeasureCiConZ, .prototype_args = list(measure = "classif.acc"))

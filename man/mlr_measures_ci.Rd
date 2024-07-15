@@ -19,10 +19,10 @@ The desired alpha level.
 }
 
 \examples{
-rr = resample(tsk("sonar"), rsmp("classif.featureless"), rsmp("holdout"))
+rr = resample(tsk("sonar"), lrn("classif.featureless"), rsmp("holdout"))
 rr$aggregate(msr("ci", "classif.acc"))
 # is the same as:
-rr$aggregate(msr("ci.holdout", "classif.acc")
+rr$aggregate(msr("ci.holdout", "classif.acc"))
 }
 \section{Super classes}{
 \code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inference:MeasureAbstractCi]{mlr3inference::MeasureAbstractCi}} -> \code{Measure}

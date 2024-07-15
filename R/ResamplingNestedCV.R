@@ -17,9 +17,9 @@
 #' @references
 #' `r format_bib("bates2024cross")`
 #' @examples
-#' ncv = rsmp("nested_cv", folds = 2, repeats = 10L)
+#' ncv = rsmp("nested_cv", folds = 3, repeats = 10L)
 #' ncv
-#' rr = resample(tsk("mtcars"), lrn("classif.featureless"), ncv)
+#' rr = resample(tsk("mtcars"), lrn("regr.featureless"), ncv)
 ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
   inherit = mlr3::Resampling,
   public = list(
@@ -27,7 +27,7 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        folds = p_int(lower = 1L, tags = "required"),
+        folds = p_int(lower = 2L, tags = "required"),
         repeats = p_int(lower = 1L, tags = "required")
       )
 
@@ -127,4 +127,5 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
   )
 )
 
+#' @include aaa.R
 resamplings[["nested_cv"]] = ResamplingNestedCV

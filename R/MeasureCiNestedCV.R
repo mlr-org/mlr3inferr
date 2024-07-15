@@ -86,4 +86,5 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
   )
 )
 
+#' @include aaa.R
 measures[["ci.ncv"]] =  list(MeasureCiNestedCV, .prototype_args = list(measure = "classif.acc"))

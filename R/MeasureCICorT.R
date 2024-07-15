@@ -66,4 +66,5 @@ MeasureCiCorrectedT = R6Class("MeasureCiCorrectedT",
   )
 )
 
+#' @include aaa.R
 measures[["ci.cor_t"]] = list(MeasureCiCorrectedT, .prototype_args = list(measure = "classif.acc"))
