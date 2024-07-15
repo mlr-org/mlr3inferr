@@ -42,7 +42,7 @@ navbar:
 reference:
 - title: Inference Methods
   contents:
-    - starts_with("mlr_measure_ci")
+    - starts_with("mlr_measures_ci")
 - title: Resampling Methods
   contents:
     - starts_with("mlr_resamplings")
