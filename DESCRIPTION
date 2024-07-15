@@ -5,31 +5,32 @@ Authors@R:
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
-Depends:
-    R (>= 3.1.0),
-	mlr3
-Imports:
-	data.table,
-	future,
-	mlr3misc,
-	paradox,
-	checkmate,
-	lgr,
-	withr,
-	R6
-Remotes:
-	mlr-org/mlr3@feat/loss_funs,
-	mlr-org/mlr3measures@feat/trafo
 License: LGPL-3
-URL: https://mlr3inference.mlr-org.com, https://github.com/mlr-org/mlr3inference
+URL: https://mlr3inference.mlr-org.com,
+    https://github.com/mlr-org/mlr3inference
 BugReports: https://github.com/mlr-org/mlr3inference/issues
+Depends:
+    mlr3,
+    R (>= 3.1.0)
+Imports:
+    checkmate,
+    data.table,
+    future,
+    lgr,
+    mlr3misc,
+    paradox,
+    R6,
+    withr
+Suggests: 
+    testthat (>= 3.0.0)
+Remotes:
+    mlr-org/mlr3@feat/loss_funs,
+    mlr-org/mlr3measures@feat/trafo
+Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.3.2
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
 Collate: 
     'MeasureAbstractCi.R'
     'aaa.R'

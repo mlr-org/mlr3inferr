@@ -1,5 +1,5 @@
 #' @title Nested Cross-Validation
-#' @name mlr_resamlings_ncv
+#' @name mlr_resamplings_ncv
 #' @description
 #' We have R times:
 #' * K outer resamplings

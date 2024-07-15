@@ -1,5 +1,5 @@
 #' @title Naive Cross-Validation CI
-#' @name mlr_measures_naive_cv
+#' @name mlr_measures_ci_naive_cv
 #' @description
 #' Confidence intervals for cross-validation.
 #' The method is asymptotically exact for the so called *Test Error* as defined by Bayle et al. (2020).
