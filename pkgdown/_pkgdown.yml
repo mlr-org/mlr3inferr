@@ -43,10 +43,10 @@ reference:
 - title: Inference Methods
   contents:
     - starts_with("mlr_measures_ci")
+    - mlr_measures_abstract_ci
 - title: Resampling Methods
   contents:
     - starts_with("mlr_resamplings")
-    - mlr_resamplings_abstract_ci
 - title: Package
   contents:
     - mlr3inference-package
