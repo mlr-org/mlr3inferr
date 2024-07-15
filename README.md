@@ -10,7 +10,7 @@ Package website: [dev](https://mlr3inference.mlr-org.com/dev/)
 <!-- badges: start -->
 
 [![RCMD
-Check](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yaml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yaml)
+Check](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mlr3inference)](https://CRAN.R-project.org/package=mlr3inference)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
