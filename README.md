@@ -10,7 +10,7 @@ Package website: [dev](https://mlr3inference.mlr-org.com/dev/)
 <!-- badges: start -->
 
 [![RCMD
-Check](https://github.com/mlr-org/mlr3inference/actions/workflows/rcmdcheck.yaml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/rcmdcheck.yaml)
+Check](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yaml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yaml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mlr3inference)](https://CRAN.R-project.org/package=mlr3inference)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
@@ -53,12 +53,13 @@ rr$aggregate(ci_default)
 #>         0.7391304         0.6347628         0.8434981
 ```
 
-> \[!NOTE\]  
-> \* Not for every resampling method exists an inference method. \*
-> There are combinations of datasets and learners, where inference
-> methods can fail. \* Confidence Intervals can only be obtained for
-> measures that are based on pointwise loss functions, i.e. have an
-> `$obs_loss` field.
+Note that:
+
+- Confidence Intervals can only be obtained for measures that are based
+  on pointwise loss functions, i.e. have an `$obs_loss` field.
+- Not for every resampling method exists an inference method.
+- There are combinations of datasets and learners, where inference
+  methods can fail.
 
 ## Features
 
