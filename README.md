@@ -78,10 +78,10 @@ rr$aggregate(ci_default)
 
 ## Bugs, Questions, Feedback
 
-*mlr3torch* is a free and open source software project that encourages
-participation and feedback. If you have any issues, questions,
-suggestions or feedback, please do not hesitate to open an “issue” about
-it on the GitHub page!
+*mlr3inference* is a free and open source software project that
+encourages participation and feedback. If you have any issues,
+questions, suggestions or feedback, please do not hesitate to open an
+“issue” about it on the GitHub page!
 
 In case of problems / bugs, it is often helpful if you provide a
 “minimum working example” that showcases the behaviour (but don’t worry
