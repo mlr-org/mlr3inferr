@@ -29,6 +29,26 @@ test_that("aggregation works", {
   expect_numeric(cis$classif.acc.upper)
 })
 
+test_that("ci can be used with other measure", {
+  task = tsk("iris")
+  learner = lrn("classif.rpart")
+  resampling = rsmp("holdout")
+
+  rr = resample(task, learner, resampling)
+  res = rr$aggregate(c(msr("ci.holdout", "classif.acc"), msr("classif.ce")))
+  expect_numeric(res[["classif.acc"]])
+  expect_numeric(res[["classif.acc.lower"]])
+  expect_numeric(res[["classif.acc.upper"]])
+  expect_numeric(res[["classif.ce"]])
+
+  bmr = benchmark(benchmark_grid(c(task, tsk("sonar")), learner, resampling))
+  res = bmr$aggregate(c(msr("ci.holdout", "classif.acc"), msr("classif.ce")))
+  expect_numeric(res$classif.acc)
+  expect_numeric(res$classif.acc.lower)
+  expect_numeric(res$classif.acc.upper)
+  expect_numeric(res$classif.ce)
+})
+
 test_that("wrapped measure must evaluate test", {
   rr = resample(tsk("iris"), lrn("classif.featureless", predict_sets = "train"), rsmp("holdout"))
   expect_error(rr$aggregate(msr("ci.holdout", "classif.acc")))

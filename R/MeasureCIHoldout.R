@@ -3,8 +3,7 @@
 #' @description
 #' Standard holdout CI.
 #' @section Parameters:
-#' * `alpha` :: `numeric(1)`\cr
-#'   The desired alpha level.
+#' Only those from [`MeasureAbstractCi`].
 #' @template param_measure
 #' @export
 #' @examples

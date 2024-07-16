@@ -12,10 +12,7 @@ used \code{\link[mlr3:Resampling]{Resampling}}.
 }
 \section{Parameters}{
 
-\itemize{
-\item \code{alpha} :: \code{numeric(1)}\cr
-The desired alpha level.
-}
+Only those from \code{\link{MeasureAbstractCi}}.
 }
 
 \examples{

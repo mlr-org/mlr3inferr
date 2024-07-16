@@ -1,13 +1,7 @@
 #' @title Nested Cross-Validation
 #' @name mlr_resamplings_ncv
 #' @description
-#' We have R times:
-#' * K outer resamplings
-#' * K * (K - 1) inner resamplings
-#'
-#' The first K^2 iters are then:
-#' The first K are the outer K iterations.
-#' Then, we have K * (K - 1) inner iterations.
+#' This implements the Nested CV resampling procedure by Bates et al. (2024).
 #' @section Parameters:
 #' * `folds` :: `integer(1)`\cr
 #'   The number of folds.
@@ -27,7 +21,7 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        folds = p_int(lower = 2L, tags = "required"),
+        folds = p_int(lower = 3L, tags = "required"),
         repeats = p_int(lower = 1L, tags = "required")
       )
 
@@ -35,10 +29,12 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
         label = "Nested CV", man = "mlr3::mlr_resamplings_nested_cv"
       )
     },
-    #' @description For a given iteration return info about the inner and outer loop.
-    #' In case the iteration belongs to the outer loop, the value `inner` is set to `NA_integer_`.
+    #' @description
+    #' Convert a resampling iteration to a more useful representation.
+    #' For outer resampling iterations, `inner` is `NA`.
     #' @param iter (`integer(1)`)\cr
     #'   The iteration.
+    #' @return `list(rep, outer, inner)`
     unflatten = function(iter) {
       assert_int(iter, lower = 1L, upper = self$iters)
       pv = self$param_set$get_values()

@@ -37,10 +37,11 @@ loss function.
 library(mlr3inference)
 
 rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
-ci = msr("ci.holdout", "classif.acc")
+# 0.95 is also the default
+ci = msr("ci.holdout", "classif.acc", alpha = 0.95)
 rr$aggregate(ci)
 #>       classif.acc classif.acc.lower classif.acc.upper 
-#>         0.7391304         0.6347628         0.8434981
+#>         0.7391304         0.7357913         0.7424696
 ```
 
 It is also possible to select the default inference method for a certain

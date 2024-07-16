@@ -10,10 +10,7 @@ Because the variance estimate is obtained using only \code{n / 2} observations, 
 }
 \section{Parameters}{
 
-\itemize{
-\item \code{alpha} :: \code{numeric(1)}\cr
-The desired alpha level.
-}
+Only those from \code{\link{MeasureAbstractCi}}.
 }
 
 \examples{

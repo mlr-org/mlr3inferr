@@ -1,10 +1,19 @@
 #' @title Abstract Class for Confidence Intervals
 #' @name mlr_measures_abstract_ci
 #' @description
-#' Abstract base class for confidence interval measures.
+#' Base class for confidence interval measures.
 #' See section *Inheriting* on how to add a new method.
+#' @section Parameters:
+#' * `alpha` :: `numeric(1)`\cr
+#'   The desired alpha level.
+#'   This is initialized to $0.05$.
+#' * `within_range` :: `logical(1)`\cr
+#'   Whether  to restrict the confidence interval within the range of possible values.
+#'   This is initialized to `TRUE`.
 #' @details
 #' The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point estimate is constructed.
+#' If a measure for which to calculate a CI has `$obs_loss` but also a `$trafo`, a common example being
+#' the RMSE measure, first a CI for the MSE is obtained, and then the transformation is applied, which can result in non-symmetric CIs.
 #' @param measure ([`Measure`][mlr3::Measure])\cr
 #'   The measure for which to calculate a confidence interval. Must have `$obs_loss`.
 #' @param resamplings (`character()`)\cr
@@ -25,7 +34,7 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
   inherit = Measure,
   public = list(
     #' @field resamplings (`character()`)\cr
-    #' On which resamplings this method can operate.
+    #' On which resampling classes this method can operate.
     resamplings = NULL,
     #' @field measure ([`Measure`][mlr3::Measure])\cr
     measure = NULL,
@@ -40,7 +49,7 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
           check_false(inherits(measure, "MeasureCi")),
           check_function(measure$obs_loss),
           combine = "and",
-          .var.name = "Argument measure must be a scalar Measure with a pointwise loss function"
+          .var.name = "Argument measure must be a scalar Measure with a pointwise loss function (has $obs_loss field)"
         )
         measure
       }

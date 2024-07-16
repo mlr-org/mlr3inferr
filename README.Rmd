@@ -51,7 +51,8 @@ This is achieved using the `msr("ci.holdout")` measure, to which we pass another
 library(mlr3inference)
 
 rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
-ci = msr("ci.holdout", "classif.acc")
+# 0.95 is also the default
+ci = msr("ci.holdout", "classif.acc", alpha = 0.95)
 rr$aggregate(ci)
 ```
 

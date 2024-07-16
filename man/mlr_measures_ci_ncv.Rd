@@ -9,14 +9,10 @@ Confidence Intervals based on \code{\link{ResamplingNestedCV}}, including bias-c
 }
 \section{Parameters}{
 
-\itemize{
-\item \code{alpha} :: \code{numeric(1)}\cr
-The desired alpha level.
-}
+Only those from \code{\link{MeasureAbstractCi}}.
 }
 
 \examples{
-# cheap parameterization to run quickly:
 ci_ncv = msr("ci.ncv", "classif.acc")
 ci_ncv
 }

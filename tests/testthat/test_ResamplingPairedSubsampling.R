@@ -85,3 +85,48 @@ test_that("ratio is respected", {
   expect_equal(length(r$test_set(2)), 20)
   expect_equal(length(r$train_set(2)), 30)
 })
+
+test_that("stratification", {
+  task = tsk("iris")$filter(1:100)$droplevels()
+  task$col_roles$stratum = "Species"
+  r = rsmp("paired_subsampling", repeats_in = 1, repeats_out = 1, ratio = 0.8)
+  r$instantiate(task)
+  walk(1:3, function(i) {
+    expect_equal(length(unique(table(task$data(r$test_set(i), "Species")$Species))), 1)
+    expect_equal(length(unique(table(task$data(r$train_set(i), "Species")$Species))), 1)
+    expect_disjunct(r$train_set(i), r$test_set(i))
+  })
+  expect_disjunct(r$train_set(2), r$train_set(3))
+  expect_disjunct(r$test_set(2), r$test_set(3))
+})
+
+test_that("uneven dataset size", {
+  task = tsk("iris")$filter(1:101)$droplevels()
+  r = rsmp("paired_subsampling", repeats_in = 1, repeats_out = 1, ratio = 0.8)
+  r$instantiate(task)
+  expect_equal(length(r$train_set(1)) + length(r$test_set(1)), 101)
+  expect_equal(length(r$train_set(2)), 30)
+  expect_equal(length(r$test_set(2)), 20)
+  expect_equal(length(r$train_set(3)), 30)
+  expect_equal(length(r$test_set(3)), 20)
+})
+
+test_that("error when stratum has 1 observation", {
+  r = rsmp("paired_subsampling", repeats_in = 1, repeats_out = 1, ratio = 0.8)
+  expect_error(r$instantiate(tsk("iris")$filter(1)), "task")
+  task = tsk("iris")$filter(1:101)$droplevels()
+  task$col_roles$stratum = "Species"
+  expect_error(r$instantiate(task), "strata")
+})
+
+test_that("uneven dataset size stratification", {
+  task = tsk("iris")$filter(1:141)$droplevels()
+  task$col_roles$stratum = "Species"
+  r = rsmp("paired_subsampling", repeats_in = 1, repeats_out = 1, ratio = 0.8)
+  r$instantiate(task)
+  expect_equal(length(r$train_set(1)) + length(r$test_set(1)), 141)
+  expect_equal(length(r$train_set(2)), 42)
+  expect_equal(length(r$test_set(2)), 28)
+  expect_equal(length(r$train_set(3)), 42)
+  expect_equal(length(r$test_set(3)), 28)
+})

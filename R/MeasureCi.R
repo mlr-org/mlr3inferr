@@ -7,8 +7,7 @@
 #' used [`Resampling`][mlr3::Resampling].
 #' @template param_measure
 #' @section Parameters:
-#' * `alpha` :: `numeric(1)`\cr
-#'   The desired alpha level.
+#' Only those from [`MeasureAbstractCi`].
 #' @export
 #' @examples
 #' rr = resample(tsk("sonar"), lrn("classif.featureless"), rsmp("holdout"))
@@ -37,8 +36,7 @@ MeasureCi = R6Class("Measure",
         .key = mlr3::mlr_reflections$default_ci_methods[[class(rr$resampling)[[1L]]]],
         measure = self$measure$clone(deep = TRUE)
       )
-
-      get_private(measure)$.ci(tbl, rr, param_vals)
+      get_private(measure)$.ci(tbl, rr, measure$param_set$get_values())
     }
   )
 )

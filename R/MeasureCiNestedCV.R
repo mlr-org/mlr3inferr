@@ -3,14 +3,12 @@
 #' @description
 #' Confidence Intervals based on [`ResamplingNestedCV`][ResamplingNestedCV], including bias-correction.
 #' @section Parameters:
-#' * `alpha` :: `numeric(1)`\cr
-#'   The desired alpha level.
+#' Only those from [`MeasureAbstractCi`].
 #' @template param_measure
 #' @export
 #' @references
 #' `r format_bib("bates2024cross")`
 #' @examples
-#' # cheap parameterization to run quickly:
 #' ci_ncv = msr("ci.ncv", "classif.acc")
 #' ci_ncv
 MeasureCiNestedCV = R6Class("MeasureCiNestedCV",

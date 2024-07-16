@@ -5,8 +5,7 @@
 #' A heuristic factor is applied to correct for the dependence between the iterations.
 #' The confidence intervals tend to be liberal.
 #' @section Parameters:
-#' * `alpha` :: `numeric(1)`\cr
-#'   The desired alpha level.
+#' Only those from [`MeasureAbstractCi`].
 #' @template param_measure
 #' @export
 #' @references

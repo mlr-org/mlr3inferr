@@ -4,8 +4,7 @@
 #' The conservative-z confidence intervals based on the [`ResamplingPairedSubsampling`].
 #' Because the variance estimate is obtained using only `n / 2` observations, it tends to be conservative.
 #' @section Parameters:
-#' * `alpha` :: `numeric(1)`\cr
-#'   The desired alpha level.
+#' Only those from [`MeasureAbstractCi`].
 #' @template param_measure
 #' @export
 #' @references

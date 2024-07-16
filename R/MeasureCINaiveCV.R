@@ -5,8 +5,7 @@
 #' The method is asymptotically exact for the so called *Test Error* as defined by Bayle et al. (2020).
 #' For the (expected) risk, the confidence intervals tend to be too liberal.
 #' @section Parameters:
-#' * `alpha` :: `numeric(1)`\cr
-#'   The desired alpha level.
+#' Those from [`MeasureAbstractCi`], as well as:
 #' * `variance` :: `"all-pairs"` or `"within-fold"`\cr
 #'   How to estimate the variance. The results tend to be very similar.
 #' @template param_measure

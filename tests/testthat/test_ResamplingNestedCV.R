@@ -61,3 +61,16 @@ test_that("ResamplingNestedCV works", {
     }
   }
 })
+
+test_that("stratification works",{
+  withr::local_seed(2)
+  task = tsk("iris")$filter(c(1:30, 51:80))$droplevels()
+  task$col_roles$stratum = "Species"
+  r = rsmp("nested_cv", folds = 3, repeats = 1)
+  r$instantiate(task)
+  walk(seq_len(r$iters), function(i) {
+    expect_disjunct(r$train_set(i), r$test_set(i))
+    expect_equal(length(unique(table(task$data(r$test_set(i), "Species")$Species))), 1)
+    expect_equal(length(unique(table(task$data(r$train_set(i), "Species")$Species))), 1)
+  })
+})

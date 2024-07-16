@@ -5,12 +5,26 @@
 \alias{MeasureAbstractCi}
 \title{Abstract Class for Confidence Intervals}
 \description{
-Abstract base class for confidence interval measures.
+Base class for confidence interval measures.
 See section \emph{Inheriting} on how to add a new method.
 }
 \details{
 The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point estimate is constructed.
+If a measure for which to calculate a CI has \verb{$obs_loss} but also a \verb{$trafo}, a common example being
+the RMSE measure, first a CI for the MSE is obtained, and then the transformation is applied, which can result in non-symmetric CIs.
 }
+\section{Parameters}{
+
+\itemize{
+\item \code{alpha} :: \code{numeric(1)}\cr
+The desired alpha level.
+This is initialized to $0.05$.
+\item \code{within_range} :: \code{logical(1)}\cr
+Whether  to restrict the confidence interval within the range of possible values.
+This is initialized to \code{TRUE}.
+}
+}
+
 \section{Inheriting}{
 
 To define a new CI method, inherit from the abstract base class and implement the private method:
@@ -27,7 +41,7 @@ It should return a vector containing the \code{estimate}, \code{lower} and \code
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
 \item{\code{resamplings}}{(\code{character()})\cr
-On which resamplings this method can operate.}
+On which resampling classes this method can operate.}
 
 \item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}})\cr}
 }

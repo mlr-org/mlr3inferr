@@ -5,15 +5,7 @@
 \alias{ResamplingNestedCV}
 \title{Nested Cross-Validation}
 \description{
-We have R times:
-\itemize{
-\item K outer resamplings
-\item K * (K - 1) inner resamplings
-}
-
-The first K^2 iters are then:
-The first K are the outer K iterations.
-Then, we have K * (K - 1) inner iterations.
+This implements the Nested CV resampling procedure by Bates et al. (2024).
 }
 \section{Parameters}{
 
@@ -80,8 +72,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-ResamplingNestedCV-unflatten"></a>}}
 \if{latex}{\out{\hypertarget{method-ResamplingNestedCV-unflatten}{}}}
 \subsection{Method \code{unflatten()}}{
-For a given iteration return info about the inner and outer loop.
-In case the iteration belongs to the outer loop, the value \code{inner} is set to \code{NA_integer_}.
+Convert a resampling iteration to a more useful representation.
+For outer resampling iterations, \code{inner} is \code{NA}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResamplingNestedCV$unflatten(iter)}\if{html}{\out{</div>}}
 }
@@ -93,6 +85,9 @@ In case the iteration belongs to the outer loop, the value \code{inner} is set t
 The iteration.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{list(rep, outer, inner)}
 }
 }
 \if{html}{\out{<hr>}}

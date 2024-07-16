@@ -11,10 +11,7 @@ The confidence intervals tend to be liberal.
 }
 \section{Parameters}{
 
-\itemize{
-\item \code{alpha} :: \code{numeric(1)}\cr
-The desired alpha level.
-}
+Only those from \code{\link{MeasureAbstractCi}}.
 }
 
 \examples{

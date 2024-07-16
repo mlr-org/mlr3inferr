@@ -72,7 +72,19 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
   ),
   private = list(
     .combine = function(instances) {
-      stop("internal error")
+      f = function(instances) {
+        Reduce(function(lhs, rhs) {
+          n = length(lhs$row_ids)
+          list(train =
+            Map(function(x, y) c(x, y + n), lhs$train, rhs$train),
+          row_ids = c(lhs$row_ids, rhs$row_ids)
+          )
+        }, instances)
+      }
+
+      map(seq_along(instances[[1L]]), function(i) {
+        f(map(instances, i))
+      })
     },
     .sample_once = function(ids, reps, ratio) {
       n = length(ids)
@@ -91,14 +103,23 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
       repeats_out = pvs$repeats_out
       ratio = pvs$ratio
 
-      n_task = task$nrow
-      n1 = round(n_task * ratio)
-      n2 = n_task - n1
+      n = length(ids)
+      n1 = round(n * ratio)
+      n2 = n - n1
 
       # make sure the n_sub (size of paired subsamplings) is even
-      n_sub = (n_task - n_task %% 2) / 2
+      n_sub = (n - n %% 2) / 2
 
-      instance = vector("list", length = 1 + repeats_out)
+      if (!n_sub) {
+        if (!is.null(task$strata)) {
+          stopf("Not enough observations in one of the strata")
+        } else {
+          stopf("Not enough observations in the task")
+        }
+      }
+      
+
+      instance = vector("list", length = 1 + repeats_out * 2)
       instance[[1]] = private$.sample_once(ids, repeats_in, ratio)
 
       # we want the same n2 for the subsets, just the new n1' is smaller than the n1 above
@@ -110,12 +131,11 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
 
       new_ratio = (n_sub - n2) / n_sub
 
+
       for (i in seq_len(repeats_out)) {
-        ids = sample(task$row_roles$use, n_sub * 2)
-        instance[[1 + i]] = list(
-          private$.sample_once(ids[seq(1, n_sub)], repeats_in, new_ratio),
-          private$.sample_once(ids[seq(n_sub + 1, 2 * n_sub)], repeats_in, new_ratio)
-        )
+        sub_ids = sample(ids, n_sub * 2)
+        instance[[i * 2]] =  private$.sample_once(sub_ids[seq(1, n_sub)], repeats_in, new_ratio)
+        instance[[1 + i * 2]] =  private$.sample_once(sub_ids[seq(n_sub + 1, 2 * n_sub)], repeats_in, new_ratio)
       }
       instance
     },
@@ -124,7 +144,7 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
       if (is.na(info$outer)) {
         return(self$instance[[1L]]$row_ids[self$instance[[1L]]$train[[info$inner]]])
       }
-      x = self$instance[[info$outer + 1L]][[info$partition]]
+      x = self$instance[[1L + (info$outer - 1L) * 2 + info$partition]]
       x$row_ids[x$train[[info$inner]]]
     },
 
@@ -133,7 +153,7 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
       if (is.na(info$outer)) {
         return(self$instance[[1L]]$row_ids[-self$instance[[1L]]$train[[info$inner]]])
       }
-      x = self$instance[[info$outer + 1L]][[info$partition]]
+      x = self$instance[[1L + (info$outer - 1L) * 2 + info$partition]]
       x$row_ids[-x$train[[info$inner]]]
     }
   ),

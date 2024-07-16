@@ -11,9 +11,8 @@ For the (expected) risk, the confidence intervals tend to be too liberal.
 }
 \section{Parameters}{
 
+Those from \code{\link{MeasureAbstractCi}}, as well as:
 \itemize{
-\item \code{alpha} :: \code{numeric(1)}\cr
-The desired alpha level.
 \item \code{variance} :: \code{"all-pairs"} or \code{"within-fold"}\cr
 How to estimate the variance. The results tend to be very similar.
 }
