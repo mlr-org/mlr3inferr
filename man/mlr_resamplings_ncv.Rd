@@ -35,6 +35,9 @@ Bates, Stephen, Hastie, Trevor, Tibshirani, Robert (2024).
 \describe{
 \item{\code{iters}}{(\code{integer(1)})\cr
 The total number of resampling iterations.}
+
+\item{\code{primary_iters}}{(\code{integer()})\cr
+The primary iterations to be used for point estimation.}
 }
 \if{html}{\out{</div>}}
 }

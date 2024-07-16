@@ -31,7 +31,7 @@ test_that("aggregation works", {
 
 test_that("ci can be used with other measure", {
   task = tsk("iris")
-  learner = lrn("classif.rpart")
+  learner = lrn("classif.featureless")
   resampling = rsmp("holdout")
 
   rr = resample(task, learner, resampling)

@@ -68,6 +68,13 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
       assert_ro_binding(rhs)
       pv = self$param_set$get_values()
       pv$repeats * pv$folds^2
+    },
+    #' @field primary_iters (`integer()`)\cr
+    #' The primary iterations to be used for point estimation.
+    primary_iters = function(rhs) {
+      assert_ro_binding(rhs)
+      pvs = self$param_set$get_values()
+      as.vector(outer(seq_len(pvs$folds), pvs$folds^2 * seq(0, pvs$repeats - 1), `+`))
     }
   ),
   private = list(

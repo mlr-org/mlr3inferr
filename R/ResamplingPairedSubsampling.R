@@ -163,6 +163,13 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
     iters = function(rhs) {
       pvs = self$param_set$get_values()
       (pvs$repeats_out * 2 + 1) * pvs$repeats_in
+    },
+    #' @field primary_iters (`integer()`)\cr
+    #' The primary iterations to be used for point estimation.
+    primary_iters = function(rhs) {
+      assert_ro_binding(rhs)
+      pvs = self$param_set$get_values()
+      pvs$repeats_in
     }
   )
 )

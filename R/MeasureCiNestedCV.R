@@ -81,6 +81,9 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
       s = qnorm(1 - param_vals$alpha / 2) * se
       c(err_ncv - bias, err_ncv - bias - s, err_ncv - bias + s)
     }
+  ),
+  active = list(
+    
   )
 )
 

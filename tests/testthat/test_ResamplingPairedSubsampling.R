@@ -130,3 +130,14 @@ test_that("uneven dataset size stratification", {
   expect_equal(length(r$train_set(3)), 42)
   expect_equal(length(r$test_set(3)), 28)
 })
+
+test_that("primary_iters", {
+  task = tsk("iris")
+  r = rsmp("paired_subsampling", repeats_in = 1, repeats_out = 1, ratio = 0.8)
+  r$instantiate(task)
+  expect_equal(r$primary_iters, 1L)
+  r$param_set$values$repeats_in = 2
+  expect_equal(r$primary_iters, 2L)
+  r$param_set$values$repeats_out = 2L
+  expect_equal(r$primary_iters, 2L)
+})
