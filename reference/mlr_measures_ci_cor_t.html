@@ -120,7 +120,7 @@ A measure of ID of a measure.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Minimize: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Average: custom</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: alpha=0.05, within_range=TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: primary_iters</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict type: response</span>
 <span class="r-in"><span><span class="va">rr</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span>,</span></span>
@@ -128,8 +128,6 @@ A measure of ID of a measure.</p></dd>
 <span class="r-in"><span>  <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">rsmp</a></span><span class="op">(</span><span class="st">"subsampling"</span>, repeats <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="va">m_cort</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       classif.acc classif.acc.lower classif.acc.upper </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         0.5101449         0.3611673         0.6591225 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
