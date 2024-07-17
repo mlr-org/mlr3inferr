@@ -28,10 +28,15 @@ This is initialized to \code{TRUE}.
 \section{Inheriting}{
 
 To define a new CI method, inherit from the abstract base class and implement the private method:
-\verb{ci(tbl: data.table, rr: ResampleResult, param_vals: named }list()\verb{) -> numeric(3)}
+\verb{ci: function(tbl: data.table, rr: ResampleResult, param_vals: named }list()\verb{) -> numeric(3)}
 Here, \code{tbl} contains the columns \code{loss}, \code{row_id} and \code{iteration}, which are the pointwise loss,
 the identifier of the observation and the resampling iteration.
 It should return a vector containing the \code{estimate}, \code{lower} and \code{upper} boundary in that order.
+In case the confidence interval is not of the form \verb{(estimate, estimate - z * se, estimate + z * se)}
+it is also necessary to implement
+\verb{trafo: function(ci: numeric(3), measure: Measure) -> numeric(3)}
+Which receives a confidence interval for a pointwise loss (e.g. squared-error) and transforms it according
+to the transformation \code{measure$trafo} (e.g. sqrt to go from mse to rmse).
 }
 
 \section{Super class}{

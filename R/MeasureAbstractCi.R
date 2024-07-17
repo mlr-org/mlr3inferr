@@ -25,10 +25,16 @@
 #'   The resample result.
 #' @section Inheriting:
 #' To define a new CI method, inherit from the abstract base class and implement the private method:
-#' `ci(tbl: data.table, rr: ResampleResult, param_vals: named `list()`) -> numeric(3)`
+#' `ci: function(tbl: data.table, rr: ResampleResult, param_vals: named `list()`) -> numeric(3)`
 #' Here, `tbl` contains the columns `loss`, `row_id` and `iteration`, which are the pointwise loss,
 #' the identifier of the observation and the resampling iteration.
 #' It should return a vector containing the `estimate`, `lower` and `upper` boundary in that order.
+#' In case the confidence interval is not of the form `(estimate, estimate - z * se, estimate + z * se)`
+#' it is also necessary to implement
+#' `trafo: function(ci: numeric(3), measure: Measure) -> numeric(3)`
+#' Which receives a confidence interval for a pointwise loss (e.g. squared-error) and transforms it according
+#' to the transformation `measure$trafo` (e.g. sqrt to go from mse to rmse).
+#' 
 #' @export
 MeasureAbstractCi = R6Class("MeasureAbstractCi",
   inherit = Measure,
@@ -97,13 +103,12 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
         stopf("CI for Measure '%s' requires one of: %s", self$measure$id, paste0(self$resamplings, sep = ", "))
       }
 
-
       param_vals = self$param_set$get_values()
       tbl = rr$obs_loss(self$measure)
       names(tbl)[names(tbl) == self$measure$id] = "loss"
       ci = private$.ci(tbl, rr, param_vals)
       if (!is.null(self$measure$trafo)) {
-        ci = self$measure$trafo(ci)
+        ci = private$.trafo(ci)
       }
       if (param_vals$within_range) {
         ci = pmin(pmax(ci, self$range[1L]), self$range[2L])
@@ -112,6 +117,15 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
     }
   ),
   private = list(
+    .trafo = function(ci) {
+      measure = self$measure
+      ci[[1]] = measure$trafo$fn(ci[[1]])
+      halfwidth = (ci[[3]] - ci[[1]])
+      multiplier = measure$trafo$deriv(ci[[1]])
+      est_t = measure$trafo$fn(ci[[1]])
+      ci_t = c(est_t, est_t - halfwidth * multiplier, est_t + halfwidth * multiplier)
+      set_names(ci_t, names(ci))
+    },
     .score = function(prediction, ...) {
       stopf("CI measures must be passed to $aggregate(), not $score()")
     },
