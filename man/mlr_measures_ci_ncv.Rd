@@ -9,7 +9,13 @@ Confidence Intervals based on \code{\link{ResamplingNestedCV}}, including bias-c
 }
 \section{Parameters}{
 
-Only those from \code{\link{MeasureAbstractCi}}.
+Those from \code{\link{MeasureAbstractCi}}, as well as:
+\itemize{
+\item \code{bias} :: \code{logical(1)}\cr
+Whether to do bias correction. This is initialized to \code{TRUE}.
+If \code{FALSE}, the outer iterations are used for the point estimate
+and no bias correction is applied.
+}
 }
 
 \examples{

@@ -25,7 +25,7 @@ register_mlr3 = function(...) {
     ResamplingCV = "ci.naive_cv",
     ResamplingSubsampling = "ci.cor_t",
     ResamplingPairedSubsampling = "ci.con_z",
-    ResamplingNestedCV = "ci.nvc"
+    ResamplingNestedCV = "ci.ncv"
   )
 }
 

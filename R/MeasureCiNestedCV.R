@@ -3,7 +3,11 @@
 #' @description
 #' Confidence Intervals based on [`ResamplingNestedCV`][ResamplingNestedCV], including bias-correction.
 #' @section Parameters:
-#' Only those from [`MeasureAbstractCi`].
+#' Those from [`MeasureAbstractCi`], as well as:
+#' * `bias` :: `logical(1)`\cr
+#'   Whether to do bias correction. This is initialized to `TRUE`.
+#'   If `FALSE`, the outer iterations are used for the point estimate
+#'   and no bias correction is applied.
 #' @template param_measure
 #' @export
 #' @references
@@ -17,7 +21,11 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function(measure) {
+      param_set = ps(
+        bias = p_lgl(init = TRUE, tags = "required")
+      )
       super$initialize(
+        param_set = param_set,
         measure = measure,
         resamplings = "ResamplingNestedCV",
         label = "Nested CV CI"
@@ -59,12 +67,6 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
 
       err_cv = tbl_outer[, mean(get("loss"))]
 
-      # left term going from (k - 1) / k * n to k / n
-      # right from going from (k - 2) / k * n to (k - 1) / l * n
-      # different than in ntestedcv implementation but authors did not respond to my email
-      bias = (1 + (folds - 2) / folds) * (err_ncv - err_cv)
-
-
       # we recommend re-scaling to obtain an estimate for a sample of size n by instead taking:
       mse = (folds - 1) / folds * mse
 
@@ -79,7 +81,23 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
       se = max(se_low, min(sqrt(max(0, mse)), se_up))
 
       s = qnorm(1 - param_vals$alpha / 2) * se
-      c(err_ncv - bias, err_ncv - bias - s, err_ncv - bias + s)
+      if (param_vals$bias) {
+        # left term going from (k - 1) / k * n to k / n
+        # right from going from (k - 2) / k * n to (k - 1) / l * n
+        # different than in nestedcv implementation but authors did not respond to my email
+        bias = if (param_vals$bias) {
+          bias = (1 + (folds - 2) / folds) * (err_ncv - err_cv)
+        } else {
+          NULL
+        }
+
+        c(err_ncv - bias, err_ncv - bias - s, err_ncv - bias + s)
+      } else {
+        # use the outer CVs for point estimation
+        # this is slightly different from the bates paper, but we
+        # do it here for consistency with calling e.g. $aggregate(msr("classif.acc"))
+        c(err_cv, err_cv - s, err_cv + s)
+      }
     }
   ),
   active = list(
