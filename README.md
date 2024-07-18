@@ -5,7 +5,7 @@
 
 Statistical inference methods for {mlr3}.
 
-Package website: [dev](https://mlr3inference.mlr-org.com/dev/)
+[Package website](https://mlr3inference.mlr-org.com/)
 
 <!-- badges: start -->
 

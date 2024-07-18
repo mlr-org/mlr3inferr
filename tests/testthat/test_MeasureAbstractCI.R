@@ -77,3 +77,15 @@ test_that("grouping is not allowed", {
   rr =  resample(task, lrn("regr.featureless"), rsmp("holdout"))
   expect_error(rr$aggregate(msr("ci.holdout", "regr.mse")), "grouped")
 })
+
+test_that("within_range works", {
+  withr::local_seed(1)
+  rr =  resample(tsk("mtcars"), lrn("regr.featureless"), rsmp("holdout"))
+  est = rr$aggregate(msr("regr.mse"))[[1L]]
+  measure = msr("regr.mse")
+  measure$range = c(est - 0.1, est + 0.1)
+  ci = rr$aggregate(msr("ci", measure))
+  expect_equal(ci[["regr.mse.lower"]], measure$range[1L])
+  expect_equal(ci[["regr.mse.upper"]], measure$range[2L])
+  expect_equal(ci[["regr.mse"]], est)
+})
