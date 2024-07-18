@@ -40,6 +40,8 @@ rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
 # 0.05 is also the default
 ci = msr("ci.holdout", "classif.acc", alpha = 0.05)
 rr$aggregate(ci)
+#>       classif.acc classif.acc.lower classif.acc.upper 
+#>         0.7391304         0.6347628         0.8434981
 ```
 
 It is also possible to select the default inference method for a certain
@@ -48,7 +50,28 @@ It is also possible to select the default inference method for a certain
 ``` r
 ci_default = msr("ci", "classif.acc")
 rr$aggregate(ci_default)
+#>       classif.acc classif.acc.lower classif.acc.upper 
+#>         0.7391304         0.6347628         0.8434981
 ```
+
+With [`mlr3viz`](https://mlr3viz.mlr-org.com), it is also possible to
+visualize multiple confidence intervals. Below, we compare a random
+forest with a decision tree and a featureless learner:
+
+``` r
+library(mlr3learners)
+library(mlr3viz)
+
+bmr = benchmark(benchmark_grid(
+  tsks(c("sonar", "german_credit")),
+  lrns(c("classif.rpart", "classif.ranger", "classif.featureless")),
+  rsmp("subsampling")
+))
+
+autoplot(bmr, "ci", msr("ci", "classif.ce"))
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
 
 Note that:
 

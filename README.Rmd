@@ -22,7 +22,7 @@ lgr::get_logger("mlr3")$set_threshold("warn")
 
 Statistical inference methods for {mlr3}.
 
-Package website: [dev](https://mlr3inference.mlr-org.com/dev/)
+[Package website](https://mlr3inference.mlr-org.com/)
 
 <!-- badges: start -->
 [![RCMD Check](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml)
@@ -61,6 +61,23 @@ It is also possible to select the default inference method for a certain `Resamp
 ```{r}
 ci_default = msr("ci", "classif.acc")
 rr$aggregate(ci_default)
+```
+
+With [`mlr3viz`](https://mlr3viz.mlr-org.com), it is also possible to visualize multiple confidence intervals.
+Below, we compare a random forest with a decision tree and a featureless learner:
+
+
+```{r, dpi = 300, out.width = "70%", fig.align = "center"}
+library(mlr3learners)
+library(mlr3viz)
+
+bmr = benchmark(benchmark_grid(
+  tsks(c("sonar", "german_credit")),
+  lrns(c("classif.rpart", "classif.ranger", "classif.featureless")),
+  rsmp("subsampling")
+))
+
+autoplot(bmr, "ci", msr("ci", "classif.ce"))
 ```
 
 Note that:
