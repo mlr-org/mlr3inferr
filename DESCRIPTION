@@ -1,9 +1,12 @@
 Package: mlr3inference
 Title: Inference on the Generalisation Error
 Version: 0.0.0.9000
-Authors@R: 
-    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+Authors@R: c(
+    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"),
+           comment = c(ORCID = "0000-0002-9609-3197")),
+    person("Hannah", "Schulz-Kümpel", , "hannah.kuempel@stat.uni-muenchen.de", role = "aut",
+           comment = c(ORCID = "0000-0003-3972-8392"))
+  )
 Description: What the package does (one paragraph).
 License: LGPL-3
 URL: https://mlr3inference.mlr-org.com,

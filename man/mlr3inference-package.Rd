@@ -18,6 +18,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com} (\href{https://orcid.org/0000-0002-9609-3197}{ORCID})
+
+Authors:
+\itemize{
+  \item Hannah Schulz-Kümpel \email{hannah.kuempel@stat.uni-muenchen.de} (\href{https://orcid.org/0000-0003-3972-8392}{ORCID})
+}
 
 }
