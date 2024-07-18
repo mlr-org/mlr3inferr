@@ -112,11 +112,11 @@ A measure of ID of a measure.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">rr</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample</a></span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span>, <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.featureless"</span><span class="op">)</span>, <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">rsmp</a></span><span class="op">(</span><span class="st">"holdout"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"ci"</span>, <span class="st">"classif.acc"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       classif.acc classif.acc.lower classif.acc.upper </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         0.6086957         0.4926975         0.7246938 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         0.3913043         0.2753062         0.5073025 </span>
 <span class="r-in"><span><span class="co"># is the same as:</span></span></span>
 <span class="r-in"><span><span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"ci.holdout"</span>, <span class="st">"classif.acc"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       classif.acc classif.acc.lower classif.acc.upper </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         0.6086957         0.4926975         0.7246938 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         0.3913043         0.2753062         0.5073025 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
