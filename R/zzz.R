@@ -12,6 +12,7 @@ register_mlr3 = function(...) {
   # static checker
   future::plan
   withr::with_seed
+  mlr3measures::se
 
   if (Sys.getenv("IN_PKGDOWN") == "true") {
     lg$set_threshold("warn")

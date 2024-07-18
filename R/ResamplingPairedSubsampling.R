@@ -99,9 +99,12 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
       }
 
       pvs = self$param_set$get_values()
+
       repeats_in = pvs$repeats_in
       repeats_out = pvs$repeats_out
       ratio = pvs$ratio
+
+      self$primary_iters = repeats_in
 
       n = length(ids)
       n1 = round(n * ratio)
@@ -117,7 +120,6 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
           stopf("Not enough observations in the task")
         }
       }
-      
 
       instance = vector("list", length = 1 + repeats_out * 2)
       instance[[1]] = private$.sample_once(ids, repeats_in, ratio)
@@ -130,7 +132,6 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
       # new_ratio = (n_sub - n_2 ) / n_sub + rounding
 
       new_ratio = (n_sub - n2) / n_sub
-
 
       for (i in seq_len(repeats_out)) {
         sub_ids = sample(ids, n_sub * 2)
@@ -163,13 +164,6 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
     iters = function(rhs) {
       pvs = self$param_set$get_values()
       (pvs$repeats_out * 2 + 1) * pvs$repeats_in
-    },
-    #' @field primary_iters (`integer()`)\cr
-    #' The primary iterations to be used for point estimation.
-    primary_iters = function(rhs) {
-      assert_ro_binding(rhs)
-      pvs = self$param_set$get_values()
-      pvs$repeats_in
     }
   )
 )

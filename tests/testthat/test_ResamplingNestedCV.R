@@ -84,9 +84,11 @@ test_that("primary iters", {
   r$param_set$set_values(
     folds = 4L, repeats = 1
   )
+  r$instantiate(task)
   expect_equal(r$primary_iters, 1:4)
   r$param_set$set_values(
     folds = 4L, repeats = 2
   )
+  r$instantiate(task)
   expect_equal(r$primary_iters, c(1:4, 17:20))
 })

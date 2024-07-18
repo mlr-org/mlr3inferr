@@ -137,7 +137,9 @@ test_that("primary_iters", {
   r$instantiate(task)
   expect_equal(r$primary_iters, 1L)
   r$param_set$values$repeats_in = 2
+  r$instantiate(task)
   expect_equal(r$primary_iters, 2L)
+  r$instantiate(task)
   r$param_set$values$repeats_out = 2L
   expect_equal(r$primary_iters, 2L)
 })
