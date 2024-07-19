@@ -23,12 +23,16 @@ MeasureCi = R6Class("Measure",
       super$initialize(
         measure = measure,
         resamplings = NA,
-        label = "Default CI"
+        label = "Default CI",
+        delta_method = NA
       )
-    }
-  ),
-  private = list(
-    .ci = function(tbl, rr, param_vals) {
+    },
+    #' @description
+    #' Obtain a point estimate, as well as lower and upper CI boundary.
+    #' @param rr ([`ResampleResult`][mlr3::ResampleResult])\cr
+    #'  Resample result.
+    #' @return named `numeric(3)`
+    aggregate = function(rr) {
       if (class(rr$resampling)[[1L]] %nin% names(mlr3::mlr_reflections$default_ci_methods)) {
         stopf("There is no default CI method for '%s'", class(rr$resampling)[[1L]])
       }
@@ -36,7 +40,7 @@ MeasureCi = R6Class("Measure",
         .key = mlr3::mlr_reflections$default_ci_methods[[class(rr$resampling)[[1L]]]],
         measure = self$measure$clone(deep = TRUE)
       )
-      get_private(measure)$.ci(tbl, rr, measure$param_set$get_values())
+      measure$aggregate(rr)
     }
   )
 )

@@ -21,7 +21,8 @@ MeasureCiConZ = R6Class("MeasureCiConZ",
       super$initialize(
         measure = measure,
         resamplings = "ResamplingPairedSubsampling",
-        label = "Conservative-Z CI"
+        label = "Conservative-Z CI",
+        delta_method = TRUE
       )
     }
   ),

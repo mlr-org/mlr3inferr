@@ -28,7 +28,8 @@ MeasureCiCorrectedT = R6Class("MeasureCiCorrectedT",
       super$initialize(
         measure = measure,
         resamplings = "ResamplingSubsampling",
-        label = "Corrected-T CI"
+        label = "Corrected-T CI",
+        delta_method = TRUE
       )
     }
   ),

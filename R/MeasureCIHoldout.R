@@ -20,7 +20,8 @@ MeasureCiHoldout = R6Class("MeasureCiHoldout",
       super$initialize(
         measure = measure,
         resamplings = "ResamplingHoldout",
-        label = "Holdout CI"
+        label = "Holdout CI",
+        delta_method = TRUE
       )
     }
   ),

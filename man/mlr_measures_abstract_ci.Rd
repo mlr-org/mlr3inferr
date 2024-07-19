@@ -9,9 +9,9 @@ Base class for confidence interval measures.
 See section \emph{Inheriting} on how to add a new method.
 }
 \details{
-The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point estimate is constructed.
-If a measure for which to calculate a CI has \verb{$obs_loss} but also a \verb{$trafo}, a common example being
-the RMSE measure, first a CI for the MSE is obtained, and then the transformation is applied, which can result in non-symmetric CIs.
+The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point
+estimate is constructed. If a measure for which to calculate a CI has \verb{$obs_loss} but also a \verb{$trafo},
+(such as RMSE), the delta method is used to obtain confidence intervals.
 }
 \section{Parameters}{
 
@@ -32,9 +32,10 @@ To define a new CI method, inherit from the abstract base class and implement th
 Here, \code{tbl} contains the columns \code{loss}, \code{row_id} and \code{iteration}, which are the pointwise loss,
 the identifier of the observation and the resampling iteration.
 It should return a vector containing the \code{estimate}, \code{lower} and \code{upper} boundary in that order.
+
 In case the confidence interval is not of the form \verb{(estimate, estimate - z * se, estimate + z * se)}
-it is also necessary to implement
-\verb{trafo: function(ci: numeric(3), measure: Measure) -> numeric(3)}
+it is also necessary to implement the private method:
+\verb{.trafo: function(ci: numeric(3), measure: Measure) -> numeric(3)}
 Which receives a confidence interval for a pointwise loss (e.g. squared-error) and transforms it according
 to the transformation \code{measure$trafo} (e.g. sqrt to go from mse to rmse).
 }
@@ -81,7 +82,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
   param_set = ps(),
   packages = character(),
   resamplings,
-  label
+  label,
+  delta_method = FALSE
 )}\if{html}{\out{</div>}}
 }
 
@@ -104,6 +106,9 @@ To which resampling classes this measure can be applied.}
 
 \item{\code{label}}{(\code{character(1)})\cr
 Label for the new instance.}
+
+\item{\code{delta_method}}{(\code{logical(1)})\cr
+Whether to use the delta method for measures (such RMSE) that have a trafo.}
 }
 \if{html}{\out{</div>}}
 }

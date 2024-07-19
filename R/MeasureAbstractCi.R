@@ -11,9 +11,9 @@
 #'   Whether  to restrict the confidence interval within the range of possible values.
 #'   This is initialized to `TRUE`.
 #' @details
-#' The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point estimate is constructed.
-#' If a measure for which to calculate a CI has `$obs_loss` but also a `$trafo`, a common example being
-#' the RMSE measure, first a CI for the MSE is obtained, and then the transformation is applied, which can result in non-symmetric CIs.
+#' The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point
+#' estimate is constructed. If a measure for which to calculate a CI has `$obs_loss` but also a `$trafo`,
+#' (such as RMSE), the delta method is used to obtain confidence intervals.
 #' @param measure ([`Measure`][mlr3::Measure])\cr
 #'   The measure for which to calculate a confidence interval. Must have `$obs_loss`.
 #' @param resamplings (`character()`)\cr
@@ -23,18 +23,21 @@
 #' @template param_label
 #' @param rr ([`ResampleResult`][mlr3::ResampleResult])\cr
 #'   The resample result.
+#' @param delta_method (`logical(1)`)\cr
+#'   Whether to use the delta method for measures (such RMSE) that have a trafo.
 #' @section Inheriting:
 #' To define a new CI method, inherit from the abstract base class and implement the private method:
 #' `ci: function(tbl: data.table, rr: ResampleResult, param_vals: named `list()`) -> numeric(3)`
 #' Here, `tbl` contains the columns `loss`, `row_id` and `iteration`, which are the pointwise loss,
 #' the identifier of the observation and the resampling iteration.
 #' It should return a vector containing the `estimate`, `lower` and `upper` boundary in that order.
+#'
 #' In case the confidence interval is not of the form `(estimate, estimate - z * se, estimate + z * se)`
-#' it is also necessary to implement
-#' `trafo: function(ci: numeric(3), measure: Measure) -> numeric(3)`
+#' it is also necessary to implement the private method:
+#' `.trafo: function(ci: numeric(3), measure: Measure) -> numeric(3)`
 #' Which receives a confidence interval for a pointwise loss (e.g. squared-error) and transforms it according
 #' to the transformation `measure$trafo` (e.g. sqrt to go from mse to rmse).
-#' 
+#'
 #' @export
 MeasureAbstractCi = R6Class("MeasureAbstractCi",
   inherit = Measure,
@@ -46,7 +49,8 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
     measure = NULL,
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
-    initialize = function(measure = NULL, param_set = ps(), packages = character(), resamplings, label) {
+    initialize = function(measure = NULL, param_set = ps(), packages = character(), resamplings, label, delta_method = FALSE) {
+      private$.delta_method = assert_flag(delta_method, na.ok = TRUE)
       self$measure = if (test_string(measure)) {
         msr(measure)
       } else {
@@ -90,13 +94,13 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
         stopf("Confidence Intervals for grouped observations are currently not supported")
       }
       if ("test" %nin% rr$learner$predict_sets) {
-        stopf("Predictions for set 'test' must be available to obtain confidence intervals, but learner has predict sets '%s'",
-          paste0(rr$learner$predict_sets, collapse = ", "))
+        stopf("Predictions for set 'test' must be available to obtain confidence intervals, but learner has predict sets '%s'", # nolint
+          paste0(rr$learner$predict_sets, collapse = ", ")) # nolint
       }
       measure = self$measure
       if (!identical(measure$predict_sets, "test")) {
         stopf("Measure '%s' for which CIs are to be calculated must have predict_set 'test', but has", self$measure$id,
-          paste0(self$measure$predict_sets, collapse = ", "))
+          paste0(self$measure$predict_sets, collapse = ", ")) # nolint
       }
 
       if (!is_scalar_na(self$resamplings) && !test_multi_class(rr$resampling, self$resamplings)) {
@@ -117,11 +121,16 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
     }
   ),
   private = list(
+    .delta_method = FALSE,
     .trafo = function(ci) {
+      if (!private$.delta_method) {
+        stopf("Measure '%s' has a trafo, but the CI does handle it", self$measure$id)
+      }
       measure = self$measure
+      # delta-rule
+      multiplier = measure$trafo$deriv(ci[[1]])
       ci[[1]] = measure$trafo$fn(ci[[1]])
       halfwidth = (ci[[3]] - ci[[1]])
-      multiplier = measure$trafo$deriv(ci[[1]])
       est_t = measure$trafo$fn(ci[[1]])
       ci_t = c(est_t, est_t - halfwidth * multiplier, est_t + halfwidth * multiplier)
       set_names(ci_t, names(ci))

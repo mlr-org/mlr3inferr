@@ -28,6 +28,7 @@ rr$aggregate(msr("ci.holdout", "classif.acc"))
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-Measure-new}{\code{MeasureCi$new()}}
+\item \href{#method-Measure-aggregate}{\code{MeasureCi$aggregate()}}
 \item \href{#method-Measure-clone}{\code{MeasureCi$clone()}}
 }
 }
@@ -38,7 +39,6 @@ rr$aggregate(msr("ci.holdout", "classif.acc"))
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3inference" data-topic="MeasureAbstractCi" data-id="aggregate"><a href='../../mlr3inference/html/MeasureAbstractCi.html#method-MeasureAbstractCi-aggregate'><code>mlr3inference::MeasureAbstractCi$aggregate()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -58,6 +58,27 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 A measure of ID of a measure.}
 }
 \if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Measure-aggregate"></a>}}
+\if{latex}{\out{\hypertarget{method-Measure-aggregate}{}}}
+\subsection{Method \code{aggregate()}}{
+Obtain a point estimate, as well as lower and upper CI boundary.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{MeasureCi$aggregate(rr)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{rr}}{(\code{\link[mlr3:ResampleResult]{ResampleResult}})\cr
+Resample result.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+named \code{numeric(3)}
 }
 }
 \if{html}{\out{<hr>}}

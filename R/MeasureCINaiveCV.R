@@ -30,7 +30,8 @@ MeasureCiNaiveCV = R6Class("MeasureCiNaiveCV",
         param_set = param_set,
         measure = measure,
         resamplings = c("ResamplingCV", "ResamplingLOO"),
-        label = "Naive CV CI"
+        label = "Naive CV CI",
+        delta_method = TRUE
       )
     }
   ),

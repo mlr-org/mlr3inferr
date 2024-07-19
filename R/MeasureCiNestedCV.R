@@ -28,7 +28,8 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
         param_set = param_set,
         measure = measure,
         resamplings = "ResamplingNestedCV",
-        label = "Nested CV CI"
+        label = "Nested CV CI",
+        delta_method = TRUE
       )
     }
   ),
