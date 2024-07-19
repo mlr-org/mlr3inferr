@@ -49,9 +49,9 @@ See section <em>Inheriting</em> on how to add a new method.</p>
 
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point estimate is constructed.
-If a measure for which to calculate a CI has <code>$obs_loss</code> but also a <code>$trafo</code>, a common example being
-the RMSE measure, first a CI for the MSE is obtained, and then the transformation is applied, which can result in non-symmetric CIs.</p>
+    <p>The aggregator of the wrapped measure is ignored, as the inheriting CI dictates how the point
+estimate is constructed. If a measure for which to calculate a CI has <code>$obs_loss</code> but also a <code>$trafo</code>,
+(such as RMSE), the delta method is used to obtain confidence intervals.</p>
     </div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -72,10 +72,10 @@ This is initialized to <code>TRUE</code>.</p></li>
 <code>ci: function(tbl: data.table, rr: ResampleResult, param_vals: named </code>list()<code>) -&gt; numeric(3)</code>
 Here, <code>tbl</code> contains the columns <code>loss</code>, <code>row_id</code> and <code>iteration</code>, which are the pointwise loss,
 the identifier of the observation and the resampling iteration.
-It should return a vector containing the <code>estimate</code>, <code>lower</code> and <code>upper</code> boundary in that order.
-In case the confidence interval is not of the form <code>(estimate, estimate - z * se, estimate + z * se)</code>
-it is also necessary to implement
-<code>trafo: function(ci: numeric(3), measure: Measure) -&gt; numeric(3)</code>
+It should return a vector containing the <code>estimate</code>, <code>lower</code> and <code>upper</code> boundary in that order.</p>
+<p>In case the confidence interval is not of the form <code>(estimate, estimate - z * se, estimate + z * se)</code>
+it is also necessary to implement the private method:
+<code>.trafo: function(ci: numeric(3), measure: Measure) -&gt; numeric(3)</code>
 Which receives a confidence interval for a pointwise loss (e.g. squared-error) and transforms it according
 to the transformation <code>measure$trafo</code> (e.g. sqrt to go from mse to rmse).</p>
     </div>
@@ -118,7 +118,8 @@ On which resampling classes this method can operate.</p></dd>
 <span>  param_set <span class="op">=</span> <span class="fu">ps</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  packages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">resamplings</span>,</span>
-<span>  <span class="va">label</span></span>
+<span>  <span class="va">label</span>,</span>
+<span>  delta_method <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -149,6 +150,11 @@ To which resampling classes this measure can be applied.</p></dd>
 <dt><code>label</code></dt>
 <dd><p>(<code>character(1)</code>)<br>
 Label for the new instance.</p></dd>
+
+
+<dt><code>delta_method</code></dt>
+<dd><p>(<code>logical(1)</code>)<br>
+Whether to use the delta method for measures (such RMSE) that have a trafo.</p></dd>
 
 
 </dl><p></p></div>
