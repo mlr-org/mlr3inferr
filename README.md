@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mlr3inferr <img src="man/figures/logo_orig.png" align="right" height="139" />
+# mlr3inferr <a href="https://mlr3inferr.mlr-org.com"><img src="man/figures/logo.png" align="right" height="138" alt="mlr3inferr website" /></a>
 
 Methods for statistical *inf*erence on generalization *err*or.
 
