@@ -1,18 +1,18 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>https://mlr3inference.mlr-org.com/404.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/LICENSE-text.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/authors.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/index.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/index.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr3inference-package.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_measures_abstract_ci.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_measures_ci.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_measures_ci_con_z.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_measures_ci_cor_t.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_measures_ci_holdout.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_measures_ci_naive_cv.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_measures_ci_ncv.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_resamplings_ncv.html</loc></url>
-<url><loc>https://mlr3inference.mlr-org.com/reference/mlr_resamplings_paired_subsampling.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/404.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/LICENSE-text.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/authors.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/index.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/index.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr3inferr-package.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_measures_abstract_ci.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_measures_ci.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_measures_ci_con_z.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_measures_ci_cor_t.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_measures_ci_holdout.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_measures_ci_naive_cv.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_measures_ci_ncv.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_resamplings_ncv.html</loc></url>
+<url><loc>https://mlr3inferr.mlr-org.com/reference/mlr_resamplings_paired_subsampling.html</loc></url>
 </urlset>
 
