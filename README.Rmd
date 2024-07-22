@@ -18,15 +18,15 @@ set.seed(1)
 lgr::get_logger("mlr3")$set_threshold("warn")
 ```
 
-# mlr3inference <img src="man/figures/logo_orig.png" align="right" height="139" />
+# mlr3inferr <img src="man/figures/logo_orig.png" align="right" height="139" />
 
-Statistical inference methods for {mlr3}.
+Methods for statistical *inf*erence on generalization *err*or.
 
-[Package website](https://mlr3inference.mlr-org.com/)
+[Package website](https://mlr3inferr.mlr-org.com/)
 
 <!-- badges: start -->
-[![RCMD Check](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml)
-[![CRAN status](https://www.r-pkg.org/badges/version/mlr3inference)](https://CRAN.R-project.org/package=mlr3inference)
+[![RCMD Check](https://github.com/mlr-org/mlr3inferr/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3inferr/actions/workflows/r-cmd-check.yml)
+[![CRAN status](https://www.r-pkg.org/badges/version/mlr3inferr)](https://CRAN.R-project.org/package=mlr3inferr)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
@@ -36,11 +36,11 @@ Statistical inference methods for {mlr3}.
 ## Installation
 
 ```{r, eval = FALSE}
-pak::pkg_install("mlr-org/mlr3inference")
+pak::pkg_install("mlr-org/mlr3inferr")
 ```
 
 
-## What is `mlr3inference`?
+## What is `mlr3inferr`?
 
 The main purpose of the package is to allow to obtain confidence intervals for the generalization error for a number of resampling methods.
 Below, we evaluate a decision tree on the sonar task using a holdout resampling and obtain a confidence interval for the generalization error.
@@ -48,7 +48,7 @@ This is achieved using the `msr("ci.holdout")` measure, to which we pass another
 
 
 ```{r}
-library(mlr3inference)
+library(mlr3inferr)
 
 rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
 # 0.05 is also the default
@@ -104,7 +104,7 @@ knitr::kable(content, format = "markdown", col.names = tools::toTitleCase(names(
 
 ## Bugs, Questions, Feedback
 
-*mlr3inference* is a free and open source software project that
+*mlr3inferr* is a free and open source software project that
 encourages participation and feedback. If you have any issues,
 questions, suggestions or feedback, please do not hesitate to open an
 “issue” about it on the GitHub page\!

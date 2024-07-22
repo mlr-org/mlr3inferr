@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(mlr3inference)
+library(mlr3inferr)
 
-test_check("mlr3inference")
+test_check("mlr3inferr")

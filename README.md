@@ -1,18 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mlr3inference <img src="man/figures/logo_orig.png" align="right" height="139" />
+# mlr3inferr <img src="man/figures/logo_orig.png" align="right" height="139" />
 
 Statistical inference methods for {mlr3}.
 
-[Package website](https://mlr3inference.mlr-org.com/)
+[Package website](https://mlr3inferr.mlr-org.com/)
 
 <!-- badges: start -->
 
 [![RCMD
-Check](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3inference/actions/workflows/r-cmd-check.yml)
+Check](https://github.com/mlr-org/mlr3inferr/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3inferr/actions/workflows/r-cmd-check.yml)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/mlr3inference)](https://CRAN.R-project.org/package=mlr3inference)
+status](https://www.r-pkg.org/badges/version/mlr3inferr)](https://CRAN.R-project.org/package=mlr3inferr)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
@@ -20,10 +20,10 @@ status](https://www.r-pkg.org/badges/version/mlr3inference)](https://CRAN.R-proj
 ## Installation
 
 ``` r
-pak::pkg_install("mlr-org/mlr3inference")
+pak::pkg_install("mlr-org/mlr3inferr")
 ```
 
-## What is `mlr3inference`?
+## What is `mlr3inferr`?
 
 The main purpose of the package is to allow to obtain confidence
 intervals for the generalization error for a number of resampling
@@ -34,7 +34,7 @@ measure, to which we pass another `mlr3::Measure` that determines the
 loss function.
 
 ``` r
-library(mlr3inference)
+library(mlr3inferr)
 
 rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
 # 0.05 is also the default
@@ -99,7 +99,7 @@ Note that:
 
 ## Bugs, Questions, Feedback
 
-*mlr3inference* is a free and open source software project that
+*mlr3inferr* is a free and open source software project that
 encourages participation and feedback. If you have any issues,
 questions, suggestions or feedback, please do not hesitate to open an
 “issue” about it on the GitHub page!

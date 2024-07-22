@@ -22,7 +22,7 @@ rr$aggregate(msr("ci", "classif.acc"))
 rr$aggregate(msr("ci.holdout", "classif.acc"))
 }
 \section{Super classes}{
-\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inference:MeasureAbstractCi]{mlr3inference::MeasureAbstractCi}} -> \code{Measure}
+\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{mlr3inferr::MeasureAbstractCi}} -> \code{Measure}
 }
 \section{Methods}{
 \subsection{Public methods}{

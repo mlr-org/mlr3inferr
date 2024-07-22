@@ -23,7 +23,7 @@ Nadeau, Claude, Bengio, Yoshua (1999).
 \emph{Advances in neural information processing systems}, \bold{12}.
 }
 \section{Super classes}{
-\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inference:MeasureAbstractCi]{mlr3inference::MeasureAbstractCi}} -> \code{MeasureCiConZ}
+\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{mlr3inferr::MeasureAbstractCi}} -> \code{MeasureCiConZ}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -39,7 +39,7 @@ Nadeau, Claude, Bengio, Yoshua (1999).
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3inference" data-topic="MeasureAbstractCi" data-id="aggregate"><a href='../../mlr3inference/html/MeasureAbstractCi.html#method-MeasureAbstractCi-aggregate'><code>mlr3inference::MeasureAbstractCi$aggregate()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3inferr" data-topic="MeasureAbstractCi" data-id="aggregate"><a href='../../mlr3inferr/html/MeasureAbstractCi.html#method-MeasureAbstractCi-aggregate'><code>mlr3inferr::MeasureAbstractCi$aggregate()</code></a></span></li>
 </ul>
 </details>
 }}

@@ -81,7 +81,7 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
         average = "custom",
         properties = "primary_iters",
         predict_type = self$measure$predict_type,
-        packages = unique(c(self$measure$packages, "mlr3inference"), packages),
+        packages = unique(c(self$measure$packages, "mlr3inferr"), packages),
         label = label
       )
     },

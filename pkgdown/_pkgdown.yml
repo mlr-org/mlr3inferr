@@ -1,4 +1,4 @@
-url: https://mlr3inference.mlr-org.com
+url: https://mlr3inferr.mlr-org.com
 
 template:
   bootstrap: 5
@@ -28,7 +28,7 @@ navbar:
       href: https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/
     github:
       icon: fa fa-github
-      href: https://github.com/mlr-org/mlr3inference
+      href: https://github.com/mlr-org/mlr3inferr
     book:
       text: mlr3book
       icon: fa fa-link
@@ -50,4 +50,4 @@ reference:
     - starts_with("mlr_resamplings")
 - title: Package
   contents:
-    - mlr3inference-package
+    - mlr3inferr-package

@@ -1,5 +1,5 @@
-Package: mlr3inference
-Title: Inference on the Generalisation Error
+Package: mlr3inferr
+Title: Inference on the Generalization Error
 Version: 0.0.0.9000
 Authors@R: c(
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"),
@@ -7,11 +7,12 @@ Authors@R: c(
     person("Hannah", "Schulz-Kümpel", , "hannah.kuempel@stat.uni-muenchen.de", role = "aut",
            comment = c(ORCID = "0000-0003-3972-8392"))
   )
-Description: What the package does (one paragraph).
+Description: Confidence interval and resampling
+    methods for inference on the generalization error.
 License: LGPL-3
-URL: https://mlr3inference.mlr-org.com,
-    https://github.com/mlr-org/mlr3inference
-BugReports: https://github.com/mlr-org/mlr3inference/issues
+URL: https://mlr3inferr.mlr-org.com,
+    https://github.com/mlr-org/mlr3inferr
+BugReports: https://github.com/mlr-org/mlr3inferr/issues
 Depends:
     mlr3,
     R (>= 3.1.0)
