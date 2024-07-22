@@ -3,7 +3,7 @@
 
 # mlr3inferr <img src="man/figures/logo_orig.png" align="right" height="139" />
 
-Statistical inference methods for {mlr3}.
+Methods for statistical *inf*erence on generalization *err*or.
 
 [Package website](https://mlr3inferr.mlr-org.com/)
 
@@ -99,10 +99,10 @@ Note that:
 
 ## Bugs, Questions, Feedback
 
-*mlr3inferr* is a free and open source software project that
-encourages participation and feedback. If you have any issues,
-questions, suggestions or feedback, please do not hesitate to open an
-“issue” about it on the GitHub page!
+*mlr3inferr* is a free and open source software project that encourages
+participation and feedback. If you have any issues, questions,
+suggestions or feedback, please do not hesitate to open an “issue” about
+it on the GitHub page!
 
 In case of problems / bugs, it is often helpful if you provide a
 “minimum working example” that showcases the behaviour (but don’t worry
