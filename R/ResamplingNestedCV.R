@@ -4,9 +4,9 @@
 #' This implements the Nested CV resampling procedure by Bates et al. (2024).
 #' @section Parameters:
 #' * `folds` :: `integer(1)`\cr
-#'   The number of folds.
+#'   The number of folds. This is initialized to `5`.
 #' * `repeats` :: `integer(1)`\cr
-#'   The number of repetitions.
+#'   The number of repetitions. THis is initialized to `10`.
 #' @export
 #' @references
 #' `r format_bib("bates2024cross")`
@@ -21,8 +21,8 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        folds = p_int(lower = 3L, tags = "required"),
-        repeats = p_int(lower = 1L, tags = "required")
+        folds = p_int(lower = 3L, tags = "required", init = 5L),
+        repeats = p_int(lower = 1L, tags = "required", init = 10L)
       )
 
       super$initialize(id = "nested_cv", param_set = param_set,

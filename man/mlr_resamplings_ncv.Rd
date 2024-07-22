@@ -11,9 +11,9 @@ This implements the Nested CV resampling procedure by Bates et al. (2024).
 
 \itemize{
 \item \code{folds} :: \code{integer(1)}\cr
-The number of folds.
+The number of folds. This is initialized to \code{5}.
 \item \code{repeats} :: \code{integer(1)}\cr
-The number of repetitions.
+The number of repetitions. THis is initialized to \code{10}.
 }
 }
 
