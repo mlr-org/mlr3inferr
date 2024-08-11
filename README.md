@@ -3,7 +3,7 @@
 
 # mlr3inferr <a href="https://mlr3inferr.mlr-org.com"><img src="man/figures/logo.png" align="right" height="138" alt="mlr3inferr website" /></a>
 
-Methods for statistical *inf*erence on generalization *err*or.
+Methods for statistical *inf*erence on the generalization *err*or.
 
 [Package website](https://mlr3inferr.mlr-org.com/)
 
