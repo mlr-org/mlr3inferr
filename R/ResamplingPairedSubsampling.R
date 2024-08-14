@@ -104,7 +104,7 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
       repeats_out = pvs$repeats_out
       ratio = pvs$ratio
 
-      self$primary_iters = repeats_in
+      private$.primary_iters = repeats_in
 
       n = length(ids)
       n1 = round(n * ratio)

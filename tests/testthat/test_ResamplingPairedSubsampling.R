@@ -135,11 +135,11 @@ test_that("primary_iters", {
   task = tsk("iris")
   r = rsmp("paired_subsampling", repeats_in = 1, repeats_out = 1, ratio = 0.8)
   r$instantiate(task)
-  expect_equal(r$primary_iters, 1L)
+  expect_equal(get_private(r)$.primary_iters, 1L)
   r$param_set$values$repeats_in = 2
   r$instantiate(task)
-  expect_equal(r$primary_iters, 2L)
+  expect_equal(get_private(r)$.primary_iters, 2L)
   r$instantiate(task)
   r$param_set$values$repeats_out = 2L
-  expect_equal(r$primary_iters, 2L)
+  expect_equal(get_private(r)$.primary_iters, 2L)
 })

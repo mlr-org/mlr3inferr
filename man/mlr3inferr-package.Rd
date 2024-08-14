@@ -6,6 +6,8 @@
 \alias{mlr3inferr-package}
 \title{mlr3inferr: Inference on the Generalization Error}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Confidence interval and resampling methods for inference on the generalization error.
 }
 \seealso{

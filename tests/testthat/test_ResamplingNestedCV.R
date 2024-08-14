@@ -80,15 +80,15 @@ test_that("primary iters", {
   task$col_roles$stratum = "Species"
   r = rsmp("nested_cv", folds = 3, repeats = 1)
   r$instantiate(task)
-  expect_equal(r$primary_iters, 1:3)
+  expect_equal(get_private(r)$.primary_iters, 1:3)
   r$param_set$set_values(
     folds = 4L, repeats = 1
   )
   r$instantiate(task)
-  expect_equal(r$primary_iters, 1:4)
+  expect_equal(get_private(r)$.primary_iters, 1:4)
   r$param_set$set_values(
     folds = 4L, repeats = 2
   )
   r$instantiate(task)
-  expect_equal(r$primary_iters, c(1:4, 17:20))
+  expect_equal(get_private(r)$.primary_iters, c(1:4, 17:20))
 })

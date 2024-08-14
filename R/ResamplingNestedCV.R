@@ -75,7 +75,7 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
       pv = self$param_set$get_values()
       folds = pv$folds
       repeats = pv$repeats
-      self$primary_iters = as.vector(outer(seq_len(pv$folds), pv$folds^2 * seq(0, pv$repeats - 1), `+`))
+      private$.primary_iters = as.vector(outer(seq_len(pv$folds), pv$folds^2 * seq(0, pv$repeats - 1), `+`))
       map_dtr(seq(repeats), function(r) {
         data.table(
           row_id = ids,
