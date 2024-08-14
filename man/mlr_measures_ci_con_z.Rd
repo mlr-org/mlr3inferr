@@ -7,6 +7,7 @@
 \description{
 The conservative-z confidence intervals based on the \code{\link{ResamplingPairedSubsampling}}.
 Because the variance estimate is obtained using only \code{n / 2} observations, it tends to be conservative.
+This inference method can also be applied to non-decomposable losses.
 }
 \section{Parameters}{
 

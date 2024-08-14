@@ -2,6 +2,7 @@
 #' @name mlr_measures_ci_holdout
 #' @description
 #' Standard holdout CI.
+#' This inference method can only be applied to decomposable losses.
 #' @section Parameters:
 #' Only those from [`MeasureAbstractCi`].
 #' @template param_measure

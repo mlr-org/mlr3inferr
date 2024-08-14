@@ -29,7 +29,8 @@ This is initialized to \code{TRUE}.
 
 To define a new CI method, inherit from the abstract base class and implement the private method:
 \verb{ci: function(tbl: data.table, rr: ResampleResult, param_vals: named }list()\verb{) -> numeric(3)}
-Here, \code{tbl} contains the columns \code{loss}, \code{row_id} and \code{iteration}, which are the pointwise loss,
+If \code{requires_obs_loss} is set to \code{TRUE}, \code{tbl} contains the columns \code{loss}, \code{row_id} and \code{iteration}, which are the pointwise loss,
+Otherwise, \code{tbl} contains the result of \code{rr$score()} with the name of the loss column set to \code{"loss"}.
 the identifier of the observation and the resampling iteration.
 It should return a vector containing the \code{estimate}, \code{lower} and \code{upper} boundary in that order.
 
@@ -83,7 +84,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
   packages = character(),
   resamplings,
   label,
-  delta_method = FALSE
+  delta_method = FALSE,
+  requires_obs_loss = TRUE
 )}\if{html}{\out{</div>}}
 }
 
@@ -109,6 +111,9 @@ Label for the new instance.}
 
 \item{\code{delta_method}}{(\code{logical(1)})\cr
 Whether to use the delta method for measures (such RMSE) that have a trafo.}
+
+\item{\code{requires_obs_loss}}{(\code{logical(1)})\cr
+Whether the inference method requires a pointwise loss function.}
 }
 \if{html}{\out{</div>}}
 }

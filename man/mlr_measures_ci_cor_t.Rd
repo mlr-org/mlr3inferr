@@ -8,6 +8,7 @@
 Corrected-T confidence intervals based on \code{\link[mlr3:mlr_resamplings_subsampling]{ResamplingSubsampling}}.
 A heuristic factor is applied to correct for the dependence between the iterations.
 The confidence intervals tend to be liberal.
+This inference method can also be applied to non-decomposable losses.
 }
 \section{Parameters}{
 

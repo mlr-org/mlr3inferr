@@ -8,6 +8,7 @@
 Confidence intervals for cross-validation.
 The method is asymptotically exact for the so called \emph{Test Error} as defined by Bayle et al. (2020).
 For the (expected) risk, the confidence intervals tend to be too liberal.
+This inference method can only be applied to decomposable losses.
 }
 \section{Parameters}{
 

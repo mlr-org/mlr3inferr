@@ -3,6 +3,7 @@
 #' @description
 #' The conservative-z confidence intervals based on the [`ResamplingPairedSubsampling`].
 #' Because the variance estimate is obtained using only `n / 2` observations, it tends to be conservative.
+#' This inference method can also be applied to non-decomposable losses.
 #' @section Parameters:
 #' Only those from [`MeasureAbstractCi`].
 #' @template param_measure
@@ -22,6 +23,7 @@ MeasureCiConZ = R6Class("MeasureCiConZ",
         measure = measure,
         resamplings = "ResamplingPairedSubsampling",
         label = "Conservative-Z CI",
+        requires_obs_loss = FALSE,
         delta_method = TRUE
       )
     }
@@ -30,7 +32,6 @@ MeasureCiConZ = R6Class("MeasureCiConZ",
     .ci = function(tbl, rr, param_vals) {
       repeats_in = rr$resampling$param_set$values$repeats_in
       repeats_out = rr$resampling$param_set$values$repeats_out
-      tbl = tbl[, list(loss = mean(get("loss"))), by = "iteration"]
 
       estimate = tbl[get("iteration") <= repeats_in, mean(get("loss"))]
 

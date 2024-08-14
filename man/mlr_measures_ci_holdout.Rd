@@ -6,6 +6,7 @@
 \title{Holdout CI}
 \description{
 Standard holdout CI.
+This inference method can only be applied to decomposable losses.
 }
 \section{Parameters}{
 
