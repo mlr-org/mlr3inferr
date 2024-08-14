@@ -29,8 +29,7 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Remotes:
-    mlr-org/mlr3@feat/loss_funs,
-    mlr-org/mlr3measures
+    mlr-org/mlr3
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
