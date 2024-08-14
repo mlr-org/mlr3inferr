@@ -6,6 +6,7 @@
 \title{Nested CV CI}
 \description{
 Confidence Intervals based on \code{\link{ResamplingNestedCV}}, including bias-correction.
+This inference method can only be applied to decomposable losses.
 }
 \section{Parameters}{
 

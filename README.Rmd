@@ -96,7 +96,7 @@ Note that:
 
 ```{r, echo = TRUE}
 content = as.data.table(mlr3::mlr_measures, objects = TRUE)[startsWith(get("key"), "ci."),]
-content$resamplings = map(content$object, function(x) paste0(x$resamplings, sep = ", "))
+content$resamplings = map(content$object, function(x) paste0(gsub("Resampling", "", x$resamplings), collapse = ", "))
 content[["only pointwise loss"]] = map_chr(content$object, function(object) {
   if (get_private(object)$.requires_obs_loss) "yes" else "false"
 })

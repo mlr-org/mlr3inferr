@@ -91,7 +91,7 @@ Note that:
 
 ``` r
 content = as.data.table(mlr3::mlr_measures, objects = TRUE)[startsWith(get("key"), "ci."),]
-content$resamplings = map(content$object, function(x) paste0(x$resamplings, sep = ", "))
+content$resamplings = map(content$object, function(x) paste0(gsub("Resampling", "", x$resamplings), collapse = ", "))
 content[["only pointwise loss"]] = map_chr(content$object, function(object) {
   if (get_private(object)$.requires_obs_loss) "yes" else "false"
 })
@@ -99,13 +99,13 @@ content = content[, c("key", "label", "resamplings", "only pointwise loss")]
 knitr::kable(content, format = "markdown", col.names = tools::toTitleCase(names(content)))
 ```
 
-| Key | Label | Resamplings | Only Pointwise Loss |
-|:---|:---|:---|:---|
-| ci.con_z | Conservative-Z CI | ResamplingPairedSubsampling, | false |
-| ci.cor_t | Corrected-T CI | ResamplingSubsampling, | false |
-| ci.holdout | Holdout CI | ResamplingHoldout, | yes |
-| ci.naive_cv | Naive CV CI | ResamplingCV, , ResamplingLOO, | yes |
-| ci.ncv | Nested CV CI | ResamplingNestedCV, | yes |
+| Key         | Label             | Resamplings       | Only Pointwise Loss |
+|:------------|:------------------|:------------------|:--------------------|
+| ci.con_z    | Conservative-Z CI | PairedSubsampling | false               |
+| ci.cor_t    | Corrected-T CI    | Subsampling       | false               |
+| ci.holdout  | Holdout CI        | Holdout           | yes                 |
+| ci.naive_cv | Naive CV CI       | CV, LOO           | yes                 |
+| ci.ncv      | Nested CV CI      | NestedCV          | yes                 |
 
 ## Bugs, Questions, Feedback
 
