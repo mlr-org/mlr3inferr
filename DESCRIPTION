@@ -27,7 +27,8 @@ Imports:
     R6,
     withr
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    rpart
 Remotes:
     mlr-org/mlr3
 Config/testthat/edition: 3

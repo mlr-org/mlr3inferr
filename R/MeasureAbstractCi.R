@@ -18,6 +18,8 @@
 #'   The measure for which to calculate a confidence interval. Must have `$obs_loss`.
 #' @param resamplings (`character()`)\cr
 #'   To which resampling classes this measure can be applied.
+#' @param requires_obs_loss (`logical(1)`)\cr
+#'   Whether the inference method requires a pointwise loss function.
 #' @template param_param_set
 #' @template param_packages
 #' @template param_label
@@ -28,7 +30,8 @@
 #' @section Inheriting:
 #' To define a new CI method, inherit from the abstract base class and implement the private method:
 #' `ci: function(tbl: data.table, rr: ResampleResult, param_vals: named `list()`) -> numeric(3)`
-#' Here, `tbl` contains the columns `loss`, `row_id` and `iteration`, which are the pointwise loss,
+#' If `requires_obs_loss` is set to `TRUE`, `tbl` contains the columns `loss`, `row_id` and `iteration`, which are the pointwise loss,
+#' Otherwise, `tbl` contains the result of `rr$score()` with the name of the loss column set to `"loss"`.
 #' the identifier of the observation and the resampling iteration.
 #' It should return a vector containing the `estimate`, `lower` and `upper` boundary in that order.
 #'
@@ -49,11 +52,14 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
     measure = NULL,
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
-    initialize = function(measure = NULL, param_set = ps(), packages = character(), resamplings, label, delta_method = FALSE) {
+    initialize = function(measure = NULL, param_set = ps(), packages = character(), resamplings, label, delta_method = FALSE,
+      requires_obs_loss = TRUE) { # nolint
       private$.delta_method = assert_flag(delta_method, na.ok = TRUE)
-      self$measure = if (test_string(measure)) {
-        msr(measure)
-      } else {
+      private$.requires_obs_loss = assert_flag(requires_obs_loss)
+      if (test_string(measure)) measure = msr(measure)
+      self$measure = measure
+
+      if (private$.requires_obs_loss) {
         assert(
           check_class(measure, "Measure"),
           check_false(inherits(measure, "MeasureCi")),
@@ -61,7 +67,13 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
           combine = "and",
           .var.name = "Argument measure must be a scalar Measure with a pointwise loss function (has $obs_loss field)"
         )
-        measure
+      } else {
+        assert(
+          check_class(measure, "Measure"),
+          check_false(inherits(measure, "MeasureCi")),
+          combine = "and",
+          .var.name = "Argument measure must be a scalar Measure."
+        )
       }
 
       param_set = c(param_set,
@@ -108,8 +120,13 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
       }
 
       param_vals = self$param_set$get_values()
-      tbl = rr$obs_loss(self$measure)
-      names(tbl)[names(tbl) == self$measure$id] = "loss"
+      tbl = if (private$.requires_obs_loss) {
+        rr$obs_loss(self$measure)
+      } else {
+        rr$score(self$measure)
+      }
+      setnames(tbl, self$measure$id, "loss")
+
       ci = private$.ci(tbl, rr, param_vals)
       if (!is.null(self$measure$trafo)) {
         ci = private$.trafo(ci)
@@ -121,10 +138,11 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
     }
   ),
   private = list(
+    .requires_obs_loss = NULL,
     .delta_method = FALSE,
     .trafo = function(ci) {
       if (!private$.delta_method) {
-        stopf("Measure '%s' has a trafo, but the CI does handle it", self$measure$id)
+        stopf("Measure '%s' has a trafo, but the CI does not handle it", self$measure$id)
       }
       measure = self$measure
       # delta-rule

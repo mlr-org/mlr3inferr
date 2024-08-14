@@ -28,6 +28,8 @@ register_mlr3 = function(...) {
     ResamplingPairedSubsampling = "ci.con_z",
     ResamplingNestedCV = "ci.ncv"
   )
+
+  mlr_reflections$measure_properties$regr = c(mlr_reflections$measure_properties$regr, "requires_obs_loss")
 }
 
 
