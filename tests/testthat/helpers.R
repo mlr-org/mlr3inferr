@@ -1,5 +1,4 @@
-expect_ci_measure = function(id, resampling, task = tsk("boston_housing"),
-  symmetric = TRUE, stratum = "chas", ...) {
+expect_ci_measure = function(id, resampling, symmetric = TRUE, ...) {
   check = function(m, rr) {
     m = m$clone(deep = TRUE)
     get("expect_measure", envir = .GlobalEnv)(m)
@@ -26,13 +25,24 @@ expect_ci_measure = function(id, resampling, task = tsk("boston_housing"),
     expect_true(ci2[2L] >= ci1[2L])
     expect_true(ci2[3L] <= ci1[3L])
   }
+  task = tsk("california_housing")$filter(1:100)
   rr = resample(task, lrn("regr.featureless"), resampling)
   check(msr(id, measure = "regr.rmse", within_range = FALSE), rr)
   check(msr(id, measure = "regr.mse", within_range = FALSE), rr)
 
-  task$col_roles$stratum = "chas"
+  task$col_roles$stratum = "ocean_proximity"
   rr_strat = resample(task, lrn("regr.featureless"), resampling)
-  check(msr(id, measure = "regr.rmse", within_range = FALSE), rr)
-  check(msr(id, measure = "regr.mse", within_range = FALSE), rr)
-}
+  check(msr(id, measure = "regr.rmse", within_range = FALSE), rr_strat)
+  check(msr(id, measure = "regr.mse", within_range = FALSE), rr_strat)
 
+  if (!mlr3misc::require_namespaces("rpart", quietly = TRUE)) return(NULL)
+
+  # decomposable vs. non-decomposable
+  rr = resample(tsk("sonar"), lrn("classif.rpart", predict_type = "prob"), resampling)
+  if (!get_private(msr(id, "regr.mse"))$.requires_obs_loss) {
+    m = msr(id, "classif.auc")
+    check(m, rr)
+  } else {
+    expect_error(msr(id, "classif.auc"))
+  }
+}

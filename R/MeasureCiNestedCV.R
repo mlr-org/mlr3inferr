@@ -2,6 +2,7 @@
 #' @name mlr_measures_ci_ncv
 #' @description
 #' Confidence Intervals based on [`ResamplingNestedCV`][ResamplingNestedCV], including bias-correction.
+#' This inference method can only be applied to decomposable losses.
 #' @section Parameters:
 #' Those from [`MeasureAbstractCi`], as well as:
 #' * `bias` :: `logical(1)`\cr

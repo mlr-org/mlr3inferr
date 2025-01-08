@@ -4,6 +4,7 @@
 #' Corrected-T confidence intervals based on [`ResamplingSubsampling`][mlr3::ResamplingSubsampling].
 #' A heuristic factor is applied to correct for the dependence between the iterations.
 #' The confidence intervals tend to be liberal.
+#' This inference method can also be applied to non-decomposable losses.
 #' @section Parameters:
 #' Only those from [`MeasureAbstractCi`].
 #' @template param_measure
@@ -29,6 +30,7 @@ MeasureCiCorrectedT = R6Class("MeasureCiCorrectedT",
         measure = measure,
         resamplings = "ResamplingSubsampling",
         label = "Corrected-T CI",
+        requires_obs_loss = FALSE,
         delta_method = TRUE
       )
     }
@@ -45,7 +47,7 @@ MeasureCiCorrectedT = R6Class("MeasureCiCorrectedT",
       n2 = n - n1
 
       # the different mu in the rows are the mu_j
-      mus = tbl[, list(estimate = mean(get("loss"))), by = "iteration"]$estimate
+      mus = tbl$loss
       # the global estimator
       estimate = mean(mus)
       # The naive SD estimate (does not take correlation between folds into account)

@@ -27,7 +27,8 @@ Imports:
     R6,
     withr
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    rpart
 Remotes:
     mlr-org/mlr3
 Config/testthat/edition: 3
@@ -38,12 +39,12 @@ RoxygenNote: 7.3.2
 Collate: 
     'MeasureAbstractCi.R'
     'aaa.R'
+    'MeasureCI.R'
     'MeasureCIConZ.R'
     'MeasureCICorT.R'
     'MeasureCIHoldout.R'
-    'MeasureCINaiveCV.R'
-    'MeasureCi.R'
-    'MeasureCiNestedCV.R'
+    'MeasureCINestedCV.R'
+    'MeasureCIWaldCV.R'
     'ResamplingNestedCV.R'
     'ResamplingPairedSubsampling.R'
     'bibentries.R'

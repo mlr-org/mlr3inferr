@@ -71,8 +71,8 @@ test_that("also works when CI measure and passed measure have different IDs", {
 })
 
 test_that("grouping is not allowed", {
-  task = tsk("boston_housing")
-  task$col_roles$group = "chas"
+  task = tsk("california_housing")$filter(1:100)
+  task$col_roles$group = "ocean_proximity"
 
   rr =  resample(task, lrn("regr.featureless"), rsmp("holdout"))
   expect_error(rr$aggregate(msr("ci.holdout", "regr.mse")), "grouped")

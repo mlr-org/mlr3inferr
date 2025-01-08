@@ -75,8 +75,8 @@ autoplot(bmr, "ci", msr("ci", "classif.ce"))
 
 Note that:
 
-- Confidence Intervals can only be obtained for measures that are based
-  on pointwise loss functions, i.e. have an `$obs_loss` field.
+- Some methods require pointwise loss functions, i.e. have an
+  `$obs_loss` field.
 - Not for every resampling method exists an inference method.
 - There are combinations of datasets and learners, where inference
   methods can fail.
@@ -89,13 +89,23 @@ Note that:
 
 ## Inference Methods
 
-| Key         | Label             | Resamplings                  |
-|:------------|:------------------|:-----------------------------|
-| ci.con_z    | Conservative-Z CI | ResamplingPairedSubsampling  |
-| ci.cor_t    | Corrected-T CI    | ResamplingSubsampling        |
-| ci.holdout  | Holdout CI        | ResamplingHoldout            |
-| ci.naive_cv | Naive CV CI       | ResamplingCV , ResamplingLOO |
-| ci.ncv      | Nested CV CI      | ResamplingNestedCV           |
+``` r
+content = as.data.table(mlr3::mlr_measures, objects = TRUE)[startsWith(get("key"), "ci."),]
+content$resamplings = map(content$object, function(x) paste0(gsub("Resampling", "", x$resamplings), collapse = ", "))
+content[["only pointwise loss"]] = map_chr(content$object, function(object) {
+  if (get_private(object)$.requires_obs_loss) "yes" else "false"
+})
+content = content[, c("key", "label", "resamplings", "only pointwise loss")]
+knitr::kable(content, format = "markdown", col.names = tools::toTitleCase(names(content)))
+```
+
+| Key         | Label             | Resamplings       | Only Pointwise Loss |
+|:------------|:------------------|:------------------|:--------------------|
+| ci.con_z    | Conservative-Z CI | PairedSubsampling | false               |
+| ci.cor_t    | Corrected-T CI    | Subsampling       | false               |
+| ci.holdout  | Holdout CI        | Holdout           | yes                 |
+| ci.wald_cv | Naive CV CI       | CV, LOO           | yes                 |
+| ci.ncv      | Nested CV CI      | NestedCV          | yes                 |
 
 ## Bugs, Questions, Feedback
 
