@@ -94,7 +94,7 @@ Note that:
 
 ## Inference Methods
 
-```{r, echo = TRUE}
+```{r, echo = FALSE}
 content = as.data.table(mlr3::mlr_measures, objects = TRUE)[startsWith(get("key"), "ci."),]
 content$resamplings = map(content$object, function(x) paste0(gsub("Resampling", "", x$resamplings), collapse = ", "))
 content[["only pointwise loss"]] = map_chr(content$object, function(object) {
