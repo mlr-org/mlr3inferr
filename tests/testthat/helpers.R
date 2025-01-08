@@ -25,12 +25,12 @@ expect_ci_measure = function(id, resampling, symmetric = TRUE, ...) {
     expect_true(ci2[2L] >= ci1[2L])
     expect_true(ci2[3L] <= ci1[3L])
   }
-  task = tsk("boston_housing")
+  task = tsk("california_housing")$filter(1:100)
   rr = resample(task, lrn("regr.featureless"), resampling)
   check(msr(id, measure = "regr.rmse", within_range = FALSE), rr)
   check(msr(id, measure = "regr.mse", within_range = FALSE), rr)
 
-  task$col_roles$stratum = "chas"
+  task$col_roles$stratum = "ocean_proximity"
   rr_strat = resample(task, lrn("regr.featureless"), resampling)
   check(msr(id, measure = "regr.rmse", within_range = FALSE), rr_strat)
   check(msr(id, measure = "regr.mse", within_range = FALSE), rr_strat)
