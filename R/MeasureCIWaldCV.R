@@ -1,5 +1,5 @@
-#' @title Naive Cross-Validation CI
-#' @name mlr_measures_ci_naive_cv
+#' @title Cross-Validation CI
+#' @name mlr_measures_ci_wald_cv
 #' @description
 #' Confidence intervals for cross-validation.
 #' The method is asymptotically exact for the so called *Test Error* as defined by Bayle et al. (2020).
@@ -14,11 +14,11 @@
 #' `r format_bib("bayle2020cross")`
 #' @export
 #' @examples
-#' m_naivecv = msr("ci.naive_cv", "classif.ce")
-#' m_naivecv
+#' m_waldcv = msr("ci.wald_cv", "classif.ce")
+#' m_waldcv
 #' rr = resample(tsk("sonar"), lrn("classif.featureless"), rsmp("cv"))
-#' rr$aggregate(m_naivecv)
-MeasureCiNaiveCV = R6Class("MeasureCiNaiveCV",
+#' rr$aggregate(m_waldcv)
+MeasureCiWaldCV = R6Class("MeasureCiWaldCV",
   inherit = MeasureAbstractCi,
   public = list(
     #' @description
@@ -61,4 +61,4 @@ MeasureCiNaiveCV = R6Class("MeasureCiNaiveCV",
 )
 
 #' @include aaa.R
-measures[["ci.naive_cv"]] = list(MeasureCiNaiveCV, .prototype_args = list(measure = "classif.acc"))
+measures[["ci.wald_cv"]] = list(MeasureCiWaldCV, .prototype_args = list(measure = "classif.acc"))

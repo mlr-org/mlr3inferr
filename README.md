@@ -104,7 +104,7 @@ knitr::kable(content, format = "markdown", col.names = tools::toTitleCase(names(
 | ci.con_z    | Conservative-Z CI | PairedSubsampling | false               |
 | ci.cor_t    | Corrected-T CI    | Subsampling       | false               |
 | ci.holdout  | Holdout CI        | Holdout           | yes                 |
-| ci.naive_cv | Naive CV CI       | CV, LOO           | yes                 |
+| ci.wald_cv | Naive CV CI       | CV, LOO           | yes                 |
 | ci.ncv      | Nested CV CI      | NestedCV          | yes                 |
 
 ## Bugs, Questions, Feedback

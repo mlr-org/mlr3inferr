@@ -128,7 +128,7 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
       setnames(tbl, self$measure$id, "loss")
 
       ci = private$.ci(tbl, rr, param_vals)
-      if (!is.null(self$measure$trafo)) {
+      if (!is.null(self$measure$trafo) && private$.requires_obs_loss) {
         ci = private$.trafo(ci)
       }
       if (param_vals$within_range) {
@@ -147,7 +147,6 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
       measure = self$measure
       # delta-rule
       multiplier = measure$trafo$deriv(ci[[1]])
-      ci[[1]] = measure$trafo$fn(ci[[1]])
       halfwidth = (ci[[3]] - ci[[1]])
       est_t = measure$trafo$fn(ci[[1]])
       ci_t = c(est_t, est_t - halfwidth * multiplier, est_t + halfwidth * multiplier)
