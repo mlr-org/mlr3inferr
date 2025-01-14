@@ -104,6 +104,20 @@ content = content[, c("key", "label", "resamplings", "only pointwise loss")]
 knitr::kable(content, format = "markdown", col.names = tools::toTitleCase(names(content)))
 ```
 
+## Citing mlr3
+
+If we use mlr3inferr, please cite our paper:
+
+    @misc{kuempelfischer2024ciforge,
+          title={Constructing Confidence Intervals for 'the' Generalization Error -- a Comprehensive Benchmark Study},
+          author={Hannah Schulz-Kümpel and Sebastian Fischer and Thomas Nagler and Anne-Laure Boulesteix and Bernd Bischl and Roman Hornung},
+          year={2024},
+          eprint={2409.18836},
+          archivePrefix={arXiv},
+          primaryClass={stat.ML},
+          url={https://arxiv.org/abs/2409.18836},
+    }
+
 
 ## Bugs, Questions, Feedback
 
