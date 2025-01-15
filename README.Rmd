@@ -22,7 +22,7 @@ lgr::get_logger("mlr3")$set_threshold("warn")
 
 Methods for statistical *inf*erence on the generalization *err*or.
 
-[Package website](https://mlr3inferr.mlr-org.com/)
+Package website: [release](https://mlr3inferr.mlr-org.com/) | [dev](https://mlr3inferr.mlr-org.com/dev/)
 
 <!-- badges: start -->
 [![RCMD Check](https://github.com/mlr-org/mlr3inferr/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3inferr/actions/workflows/r-cmd-check.yml)

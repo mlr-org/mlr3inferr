@@ -5,7 +5,8 @@
 
 Methods for statistical *inf*erence on the generalization *err*or.
 
-[Package website](https://mlr3inferr.mlr-org.com/)
+Package website: [release](https://mlr3inferr.mlr-org.com/) \|
+[dev](https://mlr3inferr.mlr-org.com/dev/)
 
 <!-- badges: start -->
 
