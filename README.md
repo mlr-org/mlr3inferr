@@ -3,7 +3,7 @@
 
 # mlr3inferr <a href="https://mlr3inferr.mlr-org.com"><img src="man/figures/logo.png" align="right" height="138" alt="mlr3inferr website" /></a>
 
-Methods for statistical *inf*erence on the generalization *err*or.
+Methods for statistical **inf**erence on the generalization **err**or.
 
 Package website: [release](https://mlr3inferr.mlr-org.com/) \|
 [dev](https://mlr3inferr.mlr-org.com/dev/)
@@ -21,6 +21,9 @@ status](https://www.r-pkg.org/badges/version/mlr3inferr)](https://CRAN.R-project
 ## Installation
 
 ``` r
+# Install release from CRAN
+install.packages("mlr3inferr")
+# Install development version from GitHub
 pak::pkg_install("mlr-org/mlr3inferr")
 ```
 
