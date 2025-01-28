@@ -39,7 +39,7 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
         id = "paired_subsampling",
         param_set = param_set,
         label = "Paired Subsampling",
-        man = "mlr3::mlr_resamplings_paired_subsampling"
+        man = "mlr3inferr::mlr_resamplings_paired_subsampling"
       )
     },
     #' @description

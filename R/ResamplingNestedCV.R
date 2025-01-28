@@ -1,5 +1,5 @@
 #' @title Nested Cross-Validation
-#' @name mlr_resamplings_ncv
+#' @name mlr_resamplings_nested_cv
 #' @description
 #' This implements the Nested CV resampling procedure by Bates et al. (2024).
 #' @section Parameters:
@@ -26,7 +26,7 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
       )
 
       super$initialize(id = "nested_cv", param_set = param_set,
-        label = "Nested CV", man = "mlr3::mlr_resamplings_nested_cv"
+        label = "Nested CV", man = "mlr3inferr::mlr_resamplings_nested_cv"
       )
     },
     #' @description
