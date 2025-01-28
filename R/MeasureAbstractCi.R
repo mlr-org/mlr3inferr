@@ -27,6 +27,8 @@
 #'   The resample result.
 #' @param delta_method (`logical(1)`)\cr
 #'   Whether to use the delta method for measures (such RMSE) that have a trafo.
+#' @param man (`character(1)`)\cr
+#'   Manual page.
 #' @section Inheriting:
 #' To define a new CI method, inherit from the abstract base class and implement the private method:
 #' `ci: function(tbl: data.table, rr: ResampleResult, param_vals: named `list()`) -> numeric(3)`
@@ -53,7 +55,7 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function(measure = NULL, param_set = ps(), packages = character(), resamplings, label, delta_method = FALSE,
-      requires_obs_loss = TRUE) { # nolint
+      requires_obs_loss = TRUE, man = NA) { # nolint
       private$.delta_method = assert_flag(delta_method, na.ok = TRUE)
       private$.requires_obs_loss = assert_flag(requires_obs_loss)
       if (test_string(measure)) measure = msr(measure)
@@ -94,6 +96,7 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
         properties = "primary_iters",
         predict_type = self$measure$predict_type,
         packages = unique(c(self$measure$packages, "mlr3inferr"), packages),
+        man = man,
         label = label
       )
     },

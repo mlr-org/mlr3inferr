@@ -85,7 +85,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
   resamplings,
   label,
   delta_method = FALSE,
-  requires_obs_loss = TRUE
+  requires_obs_loss = TRUE,
+  man = NA
 )}\if{html}{\out{</div>}}
 }
 
@@ -114,6 +115,9 @@ Whether to use the delta method for measures (such RMSE) that have a trafo.}
 
 \item{\code{requires_obs_loss}}{(\code{logical(1)})\cr
 Whether the inference method requires a pointwise loss function.}
+
+\item{\code{man}}{(\code{character(1)})\cr
+Manual page.}
 }
 \if{html}{\out{</div>}}
 }

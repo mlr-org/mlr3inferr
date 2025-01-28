@@ -24,7 +24,8 @@ MeasureCi = R6Class("Measure",
         measure = measure,
         resamplings = NA,
         label = "Default CI",
-        delta_method = NA
+        delta_method = NA,
+        man = "mlr3inferr::mlr_measures_ci"
       )
     },
     #' @description

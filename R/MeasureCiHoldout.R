@@ -1,5 +1,5 @@
 #' @title Holdout CI
-#' @name mlr_measures_ci_holdout
+#' @name mlr_measures_ci.holdout
 #' @description
 #' Standard holdout CI.
 #' This inference method can only be applied to decomposable losses.
@@ -21,8 +21,9 @@ MeasureCiHoldout = R6Class("MeasureCiHoldout",
       super$initialize(
         measure = measure,
         resamplings = "ResamplingHoldout",
-        label = "Holdout CI",
-        delta_method = TRUE
+        label = "Holdout Interval",
+        delta_method = TRUE,
+        man = "mlr3inferr::mlr_measures_ci.holdout"
       )
     }
   ),

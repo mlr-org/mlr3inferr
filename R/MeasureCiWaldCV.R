@@ -1,5 +1,5 @@
 #' @title Cross-Validation CI
-#' @name mlr_measures_ci_wald_cv
+#' @name mlr_measures_ci.wald_cv
 #' @description
 #' Confidence intervals for cross-validation.
 #' The method is asymptotically exact for the so called *Test Error* as defined by Bayle et al. (2020).
@@ -31,8 +31,9 @@ MeasureCiWaldCV = R6Class("MeasureCiWaldCV",
         param_set = param_set,
         measure = measure,
         resamplings = c("ResamplingCV", "ResamplingLOO"),
-        label = "Naive CV CI",
-        delta_method = TRUE
+        label = "Wald CV Interval",
+        delta_method = TRUE,
+        man = "mlr3inferr::mlr_measures_ci.wald_cv"
       )
     }
   ),

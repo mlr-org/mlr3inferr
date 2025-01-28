@@ -1,5 +1,5 @@
 #' @title Nested CV CI
-#' @name mlr_measures_ci_ncv
+#' @name mlr_measures_ci.ncv
 #' @description
 #' Confidence Intervals based on [`ResamplingNestedCV`][ResamplingNestedCV], including bias-correction.
 #' This inference method can only be applied to decomposable losses.
@@ -29,8 +29,9 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
         param_set = param_set,
         measure = measure,
         resamplings = "ResamplingNestedCV",
-        label = "Nested CV CI",
-        delta_method = TRUE
+        label = "Nested CV Interval",
+        delta_method = TRUE,
+        man = "mlr3inferr::mlr_measures_ci.ncv"
       )
     }
   ),

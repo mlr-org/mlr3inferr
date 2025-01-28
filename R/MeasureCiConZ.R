@@ -1,5 +1,5 @@
 #' @title Conservative-Z CI
-#' @name mlr_measures_ci_con_z
+#' @name mlr_measures_ci.con_z
 #' @description
 #' The conservative-z confidence intervals based on the [`ResamplingPairedSubsampling`].
 #' Because the variance estimate is obtained using only `n / 2` observations, it tends to be conservative.
@@ -22,9 +22,10 @@ MeasureCiConZ = R6Class("MeasureCiConZ",
       super$initialize(
         measure = measure,
         resamplings = "ResamplingPairedSubsampling",
-        label = "Conservative-Z CI",
+        label = "Conservative-Z Interval",
         requires_obs_loss = FALSE,
-        delta_method = TRUE
+        delta_method = TRUE,
+        man = "mlr3inferr::mlr_measures_ci.con_z"
       )
     }
   ),

@@ -1,5 +1,5 @@
 #' @title Corrected-T CI
-#' @name mlr_measures_ci_cor_t
+#' @name mlr_measures_ci.cor_t
 #' @description
 #' Corrected-T confidence intervals based on [`ResamplingSubsampling`][mlr3::ResamplingSubsampling].
 #' A heuristic factor is applied to correct for the dependence between the iterations.
@@ -29,9 +29,10 @@ MeasureCiCorrectedT = R6Class("MeasureCiCorrectedT",
       super$initialize(
         measure = measure,
         resamplings = "ResamplingSubsampling",
-        label = "Corrected-T CI",
+        label = "Corrected-T Interval",
         requires_obs_loss = FALSE,
-        delta_method = TRUE
+        delta_method = TRUE,
+        man = "mlr3inferr::mlr_measures_ci.cor_t"
       )
     }
   ),
