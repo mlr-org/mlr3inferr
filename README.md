@@ -115,6 +115,11 @@ If we use mlr3inferr, please cite our paper:
           url={https://arxiv.org/abs/2409.18836},
     }
 
+## Acknowledgements
+
+This R package is developed as part of the [Mathematical Research Data
+Initiative](https://www.mardi4nfdi.de/about/mission).
+
 ## Bugs, Questions, Feedback
 
 *mlr3inferr* is a free and open source software project that encourages
