@@ -103,7 +103,7 @@ Note that:
 
 ## Citing mlr3
 
-If we use mlr3inferr, please cite our paper:
+If you use mlr3inferr, please cite our paper:
 
     @misc{kuempelfischer2024ciforge,
           title={Constructing Confidence Intervals for 'the' Generalization Error -- a Comprehensive Benchmark Study},
