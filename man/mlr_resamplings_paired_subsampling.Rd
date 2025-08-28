@@ -15,6 +15,12 @@ Here, the data is divided \code{repeats_out} times into two equally sized disjun
 which, a subsampling with \code{repeats_in} repetitions is applied.
 See the \verb{$unflatten(iter)} method to map the iterations to this nested structure.
 }
+\section{Point Estimation}{
+
+When calling \verb{$aggregate()} on a resample result obtained using this resample method, only the first \code{repeats_out} iterations will be used.
+See section "Point Estimatin" of \code{\link[=mlr_measures_ci.con_z]{MeasureCiConZ}}.
+}
+
 \section{Parameters}{
 
 \itemize{

@@ -1,6 +1,6 @@
 test_that("ResamplingNestedCV works", {
   withr::local_seed(2)
-  res = rsmp("nested_cv", folds = 10, repeats = 3)
+  res = rsmp("ncv", folds = 10, repeats = 3)
   res
   task = tsk("iris")
   res$instantiate(task)
@@ -66,7 +66,7 @@ test_that("stratification works",{
   withr::local_seed(2)
   task = tsk("iris")$filter(c(1:30, 51:80))$droplevels()
   task$col_roles$stratum = "Species"
-  r = rsmp("nested_cv", folds = 3, repeats = 1)
+  r = rsmp("ncv", folds = 3, repeats = 1)
   r$instantiate(task)
   walk(seq_len(r$iters), function(i) {
     expect_disjunct(r$train_set(i), r$test_set(i))
@@ -78,7 +78,7 @@ test_that("stratification works",{
 test_that("primary iters", {
   task = tsk("iris")$filter(c(1:30, 51:80))$droplevels()
   task$col_roles$stratum = "Species"
-  r = rsmp("nested_cv", folds = 3, repeats = 1)
+  r = rsmp("ncv", folds = 3, repeats = 1)
   r$instantiate(task)
   expect_equal(get_private(r)$.primary_iters, 1:3)
   r$param_set$set_values(

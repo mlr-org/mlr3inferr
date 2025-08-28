@@ -1,13 +1,12 @@
 #' @title Nested Cross-Validation
-#' @name mlr_resamplings_nested_cv
+#' @name mlr_resamplings_ncv
 #' @description
 #' This implements the Nested CV resampling procedure by Bates et al. (2024).
 #'
 #' @section Point Estimation:
-#' The point estimate uses a bias correction term as described in Bates et al. (2024).
-#' Therefore, the results of directly applying a measure `$aggregate(<key>)` will be different
-#' from the point estimate of `$aggregate(msr("ci", <key>))`, where the point estimate is obtained
-#' by averaging over the outer CV results.
+#' When calling `$aggregate()` on a resample result obtained using this resample method, only
+#' the outer resampling iterations will be used, as they have less bias.
+#' See section "Point Estimatin" of [`MeasureCiNestedCV`][mlr_measures_ci.ncv] f
 #'
 #' @section Parameters:
 #' * `folds` :: `integer(1)`\cr
@@ -18,7 +17,7 @@
 #' @references
 #' `r format_bib("bates2024cross")`
 #' @examples
-#' ncv = rsmp("nested_cv", folds = 3, repeats = 10L)
+#' ncv = rsmp("ncv", folds = 3, repeats = 10L)
 #' ncv
 #' rr = resample(tsk("mtcars"), lrn("regr.featureless"), ncv)
 ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
@@ -32,8 +31,8 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
         repeats = p_int(lower = 1L, tags = "required", init = 10L)
       )
 
-      super$initialize(id = "nested_cv", param_set = param_set,
-        label = "Nested CV", man = "mlr3inferr::mlr_resamplings_nested_cv"
+      super$initialize(id = "ncv", param_set = param_set,
+        label = "Nested CV", man = "mlr3inferr::mlr_resamplings_ncv"
       )
     },
     #' @description
@@ -132,4 +131,8 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
 )
 
 #' @include aaa.R
-resamplings[["nested_cv"]] = ResamplingNestedCV
+resamplings[["ncv"]] = ResamplingNestedCV
+resamplings[["nested_cv"]] = function() {
+  .Deprecated("Please use key 'ncv' from now on.")
+  ResamplingNestedCV$new()
+}

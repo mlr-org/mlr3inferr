@@ -8,6 +8,14 @@
 Confidence Intervals based on \code{\link{ResamplingNestedCV}}, including bias-correction.
 This inference method can only be applied to decomposable losses.
 }
+\section{Point Estimation}{
+
+The point estimate uses a bias correction term as described in Bates et al. (2024).
+Therefore, the results of directly applying a measure \verb{$aggregate(msr(<key>))} will be different
+from the point estimate of \verb{$aggregate(msr("ci", <key>))}, where the point estimate is obtained
+by averaging over the outer CV results.
+}
+
 \section{Parameters}{
 
 Those from \code{\link{MeasureAbstractCi}}, as well as:

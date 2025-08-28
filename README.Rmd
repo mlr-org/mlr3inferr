@@ -92,7 +92,7 @@ This is because the point estimation for the former is defined by the inference 
 This is demonstrated in the example below.
 
 ```{r}
-rr = resample(tsk("iris"), lrn("classif.rpart"), rsmp("nested_cv", folds = 5L, repeats = 20L))
+rr = resample(tsk("iris"), lrn("classif.rpart"), rsmp("ncv", folds = 5L, repeats = 20L))
 ce = msr("classif.ce")
 ci = msr("ci", ce)
 c(rr$aggregate(ce)[[1]], rr$aggregate(ci)[[1]])

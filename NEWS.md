@@ -10,6 +10,11 @@
 * Improved the documentation of various inference methods w.r.t.
   the point estimation.
 
+## Other
+
+* Deprecated id `"nested_cv"` in favour of `"ncv"` for nested resampling
+procedure.
+
 # 0.1.0
 
 * Initial release.

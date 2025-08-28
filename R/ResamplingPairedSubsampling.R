@@ -9,6 +9,10 @@
 #' Here, the data is divided `repeats_out` times into two equally sized disjunct subsets, to each of which subsampling
 #' which, a subsampling with `repeats_in` repetitions is applied.
 #' See the `$unflatten(iter)` method to map the iterations to this nested structure.
+#'
+#' @section Point Estimation:
+#' When calling `$aggregate()` on a resample result obtained using this resample method, only the first `repeats_out` iterations will be used.
+#' See section "Point Estimatin" of [`MeasureCiConZ`][mlr_measures_ci.con_z].
 #' @section Parameters:
 #' * `repeats_in` :: `integer(1)`\cr
 #'   The inner repetitions.
