@@ -1,42 +1,39 @@
 Package: mlr3inferr
 Title: Inference on the Generalization Error
-Version: 0.1.0-9000
+Version: 0.2.0
 Authors@R: c(
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-9609-3197")),
     person("Hannah", "Schulz-Kümpel", , "hannah.kuempel@stat.uni-muenchen.de", role = "aut",
            comment = c(ORCID = "0000-0003-3972-8392"))
   )
-Description: Confidence interval and resampling
-    methods for inference on the generalization error.
+Description: Confidence interval and resampling methods for inference on
+    the generalization error.
 License: LGPL-3
-URL: https://mlr3inferr.mlr-org.com,
-    https://github.com/mlr-org/mlr3inferr
+URL: https://mlr3inferr.mlr-org.com, https://github.com/mlr-org/mlr3inferr
 BugReports: https://github.com/mlr-org/mlr3inferr/issues
 Depends:
-    mlr3,
+    mlr3 (>= 1.1.0),
     R (>= 3.1.0)
 Imports:
     checkmate,
     data.table,
     future,
     lgr,
-    mlr3misc,
     mlr3measures,
+    mlr3misc,
     paradox,
     R6,
     withr
-Suggests: 
-    testthat (>= 3.0.0),
-    rpart
-Remotes:
-    mlr-org/mlr3
+Suggests:
+    rpart,
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.2
-Collate: 
+RoxygenNote: 7.3.2.9000
+Collate:
     'MeasureAbstractCi.R'
     'aaa.R'
     'MeasureCi.R'

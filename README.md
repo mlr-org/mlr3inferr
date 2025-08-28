@@ -44,7 +44,7 @@ rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
 # 0.05 is also the default
 ci = msr("ci.holdout", "classif.acc", alpha = 0.05)
 rr$aggregate(ci)
-#>       classif.acc classif.acc.lower classif.acc.upper 
+#>       classif.acc classif.acc.lower classif.acc.upper
 #>         0.7391304         0.6347628         0.8434981
 ```
 
@@ -54,7 +54,7 @@ It is also possible to select the default inference method for a certain
 ``` r
 ci_default = msr("ci", "classif.acc")
 rr$aggregate(ci_default)
-#>       classif.acc classif.acc.lower classif.acc.upper 
+#>       classif.acc classif.acc.lower classif.acc.upper
 #>         0.7391304         0.6347628         0.8434981
 ```
 
@@ -85,6 +85,24 @@ Note that:
 - There are combinations of datasets and learners, where inference
   methods can fail.
 
+:warning: **Different point estimates for the same measure**
+
+In general, the point estimate of `$aggregate(msr("ci", <key>))` will
+**not** always exactly identical to the point estimate of
+`$aggregate(msr(<key>))`. This is because the point estimation for the
+former is defined by the inference method, and can for example, as is
+the case for nested cross-validation, contain a bias correction term, or
+use a different aggregation method. This is demonstrated in the example
+below.
+
+``` r
+rr = resample(tsk("iris"), lrn("classif.rpart"), rsmp("ncv", folds = 5L, repeats = 20L))
+ce = msr("classif.ce")
+ci = msr("ci", ce)
+c(rr$aggregate(ce)[[1]], rr$aggregate(ci)[[1]])
+#> [1] 0.06466667 0.06646667
+```
+
 ## Features
 
 - Additional Resampling Methods
@@ -93,13 +111,13 @@ Note that:
 
 ## Inference Methods
 
-| Key        | Label             | Resamplings       | Only Pointwise Loss |
-|:-----------|:------------------|:------------------|:--------------------|
-| ci.con_z   | Conservative-Z CI | PairedSubsampling | false               |
-| ci.cor_t   | Corrected-T CI    | Subsampling       | false               |
-| ci.holdout | Holdout CI        | Holdout           | yes                 |
-| ci.ncv     | Nested CV CI      | NestedCV          | yes                 |
-| ci.wald_cv | Naive CV CI       | CV, LOO           | yes                 |
+| Key        | Label                   | Resamplings       | Only Pointwise Loss |
+|:-----------|:------------------------|:------------------|:--------------------|
+| ci.con_z   | Conservative-Z Interval | PairedSubsampling | false               |
+| ci.cor_t   | Corrected-T Interval    | Subsampling       | false               |
+| ci.holdout | Holdout Interval        | Holdout           | yes                 |
+| ci.ncv     | Nested CV Interval      | NestedCV          | yes                 |
+| ci.wald_cv | Wald CV Interval        | CV, LOO           | yes                 |
 
 ## Citing mlr3
 

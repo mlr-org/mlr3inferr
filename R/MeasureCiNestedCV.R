@@ -3,6 +3,13 @@
 #' @description
 #' Confidence Intervals based on [`ResamplingNestedCV`][ResamplingNestedCV], including bias-correction.
 #' This inference method can only be applied to decomposable losses.
+#'
+#' @section Point Estimation:
+#' The point estimate uses a bias correction term as described in Bates et al. (2024).
+#' Therefore, the results of directly applying a measure `$aggregate(msr(<key>))` will be different
+#' from the point estimate of `$aggregate(msr("ci", <key>))`, where the point estimate is obtained
+#' by averaging over the outer CV results.
+#'
 #' @section Parameters:
 #' Those from [`MeasureAbstractCi`], as well as:
 #' * `bias` :: `logical(1)`\cr
@@ -102,9 +109,6 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
         c(err_cv, err_cv - s, err_cv + s)
       }
     }
-  ),
-  active = list(
-    
   )
 )
 

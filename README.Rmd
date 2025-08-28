@@ -31,8 +31,6 @@ Package website: [release](https://mlr3inferr.mlr-org.com/) | [dev](https://mlr3
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
-
-
 ## Installation
 
 ```{r, eval = FALSE}
@@ -42,13 +40,11 @@ install.packages("mlr3inferr")
 pak::pkg_install("mlr-org/mlr3inferr")
 ```
 
-
 ## What is `mlr3inferr`?
 
 The main purpose of the package is to allow to obtain confidence intervals for the generalization error for a number of resampling methods.
 Below, we evaluate a decision tree on the sonar task using a holdout resampling and obtain a confidence interval for the generalization error.
 This is achieved using the `msr("ci.holdout")` measure, to which we pass another `mlr3::Measure` that determines the loss function.
-
 
 ```{r}
 library(mlr3inferr)
@@ -88,6 +84,19 @@ Note that:
 * Some methods require pointwise loss functions, i.e. have an `$obs_loss` field.
 * Not for every resampling method exists an inference method.
 * There are combinations of datasets and learners, where inference methods can fail.
+
+:warning: **Different point estimates for the same measure**
+
+In general, the point estimate of `$aggregate(msr("ci", <key>))` will **not** always exactly identical to the point estimate of `$aggregate(msr(<key>))`.
+This is because the point estimation for the former is defined by the inference method, and can for example, as is the case for nested cross-validation, contain a bias correction term, or use a different aggregation method.
+This is demonstrated in the example below.
+
+```{r}
+rr = resample(tsk("iris"), lrn("classif.rpart"), rsmp("ncv", folds = 5L, repeats = 20L))
+ce = msr("classif.ce")
+ci = msr("ci", ce)
+c(rr$aggregate(ce)[[1]], rr$aggregate(ci)[[1]])
+```
 
 ## Features
 

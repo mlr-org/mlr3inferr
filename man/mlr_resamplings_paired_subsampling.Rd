@@ -6,8 +6,6 @@
 \title{Paired Subsampling}
 \description{
 Paired Subsampling to enable inference on the generalization error.
-One should \strong{not} directlu call \verb{$aggregate()} with a non-CI measure on a resample result using paired subsampling,
-as most of the resampling iterations are only intended
 }
 \details{
 The first \code{repeats_in} iterations are a standard \code{\link[mlr3:mlr_resamplings_subsampling]{ResamplingSubsampling}}
@@ -17,6 +15,12 @@ Here, the data is divided \code{repeats_out} times into two equally sized disjun
 which, a subsampling with \code{repeats_in} repetitions is applied.
 See the \verb{$unflatten(iter)} method to map the iterations to this nested structure.
 }
+\section{Point Estimation}{
+
+When calling \verb{$aggregate()} on a resample result obtained using this resampling method, only the first \code{repeats_out} iterations will be used.
+See section "Point Estimation" of \code{\link[=mlr_measures_ci.con_z]{MeasureCiConZ}}.
+}
+
 \section{Parameters}{
 
 \itemize{

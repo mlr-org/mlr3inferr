@@ -138,8 +138,8 @@ test_that("primary_iters", {
   expect_equal(get_private(r)$.primary_iters, 1L)
   r$param_set$values$repeats_in = 2
   r$instantiate(task)
-  expect_equal(get_private(r)$.primary_iters, 2L)
+  expect_equal(get_private(r)$.primary_iters, 1:2)
   r$instantiate(task)
   r$param_set$values$repeats_out = 2L
-  expect_equal(get_private(r)$.primary_iters, 2L)
+  expect_equal(get_private(r)$.primary_iters, 1:2)
 })
