@@ -6,8 +6,6 @@
 \title{Paired Subsampling}
 \description{
 Paired Subsampling to enable inference on the generalization error.
-One should \strong{not} directlu call \verb{$aggregate()} with a non-CI measure on a resample result using paired subsampling,
-as most of the resampling iterations are only intended
 }
 \details{
 The first \code{repeats_in} iterations are a standard \code{\link[mlr3:mlr_resamplings_subsampling]{ResamplingSubsampling}}

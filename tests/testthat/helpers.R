@@ -21,9 +21,9 @@ expect_ci_measure = function(id, resampling, symmetric = TRUE, ...) {
     m$param_set$values$alpha = 0.5
     ci2 = rr$aggregate(m)
 
-    expect_equal(ci1[1L], ci2[1L])
-    expect_true(ci2[2L] >= ci1[2L])
-    expect_true(ci2[3L] <= ci1[3L])
+    testthat::expect_equal(ci1[1L], ci2[1L])
+    testthat::expect_true(ci2[2L] >= ci1[2L])
+    testthat::expect_true(ci2[3L] <= ci1[3L])
   }
   task = tsk("california_housing")$filter(1:100)
   rr = resample(task, lrn("regr.featureless"), resampling)
@@ -43,6 +43,6 @@ expect_ci_measure = function(id, resampling, symmetric = TRUE, ...) {
     m = msr(id, "classif.auc")
     check(m, rr)
   } else {
-    expect_error(msr(id, "classif.auc"))
+    testthat::expect_error(msr(id, "classif.auc"))
   }
 }

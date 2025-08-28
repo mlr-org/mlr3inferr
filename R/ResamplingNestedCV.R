@@ -2,6 +2,13 @@
 #' @name mlr_resamplings_nested_cv
 #' @description
 #' This implements the Nested CV resampling procedure by Bates et al. (2024).
+#'
+#' @section Point Estimation:
+#' The point estimate uses a bias correction term as described in Bates et al. (2024).
+#' Therefore, the results of directly applying a measure `$aggregate(<key>)` will be different
+#' from the point estimate of `$aggregate(msr("ci", <key>))`, where the point estimate is obtained
+#' by averaging over the outer CV results.
+#'
 #' @section Parameters:
 #' * `folds` :: `integer(1)`\cr
 #'   The number of folds. This is initialized to `5`.

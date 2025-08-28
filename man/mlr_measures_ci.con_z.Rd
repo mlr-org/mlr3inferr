@@ -9,6 +9,13 @@ The conservative-z confidence intervals based on the \code{\link{ResamplingPaire
 Because the variance estimate is obtained using only \code{n / 2} observations, it tends to be conservative.
 This inference method can also be applied to non-decomposable losses.
 }
+\section{Point Estimation}{
+
+For the point estimation, only the first \code{repeats_out} resampling iterations will be used,
+as the other resampling iterations are only used to estimate the variance.
+This is respected when calling \verb{$aggregate()} using a standard (non-CI) measure.
+}
+
 \section{Parameters}{
 
 Only those from \code{\link{MeasureAbstractCi}}.

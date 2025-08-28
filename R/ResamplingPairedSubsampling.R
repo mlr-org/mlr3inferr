@@ -2,8 +2,6 @@
 #' @name mlr_resamplings_paired_subsampling
 #' @description
 #' Paired Subsampling to enable inference on the generalization error.
-#' One should **not** directlu call `$aggregate()` with a non-CI measure on a resample result using paired subsampling,
-#' as most of the resampling iterations are only intended 
 #' @details
 #' The first `repeats_in` iterations are a standard [`ResamplingSubsampling`][mlr3::ResamplingSubsampling]
 #' and should be used to obtain a point estimate of the generalization error.
@@ -104,7 +102,7 @@ ResamplingPairedSubsampling = R6Class("ResamplingPairedSubsampling",
       repeats_out = pvs$repeats_out
       ratio = pvs$ratio
 
-      private$.primary_iters = repeats_in
+      private$.primary_iters = seq(repeats_in)
 
       n = length(ids)
       n1 = round(n * ratio)
