@@ -18,7 +18,7 @@ See the \verb{$unflatten(iter)} method to map the iterations to this nested stru
 \section{Point Estimation}{
 
 When calling \verb{$aggregate()} on a resample result obtained using this resample method, only the first \code{repeats_out} iterations will be used.
-See section "Point Estimatin" of \code{\link[=mlr_measures_ci.con_z]{MeasureCiConZ}}.
+See section "Point Estimation" of \code{\link[=mlr_measures_ci.con_z]{MeasureCiConZ}}.
 }
 
 \section{Parameters}{

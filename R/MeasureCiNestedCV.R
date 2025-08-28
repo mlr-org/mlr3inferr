@@ -109,9 +109,6 @@ MeasureCiNestedCV = R6Class("MeasureCiNestedCV",
         c(err_cv, err_cv - s, err_cv + s)
       }
     }
-  ),
-  active = list(
-
   )
 )
 

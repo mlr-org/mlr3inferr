@@ -5,8 +5,8 @@
 #'
 #' @section Point Estimation:
 #' When calling `$aggregate()` on a resample result obtained using this resample method, only
-#' the outer resampling iterations will be used, as they have less bias.
-#' See section "Point Estimatin" of [`MeasureCiNestedCV`][mlr_measures_ci.ncv] f
+#' the outer resampling iterations will be used, as they have a smaller bias.
+#' See section "Point Estimation" of [`MeasureCiNestedCV`][mlr_measures_ci.ncv].
 #'
 #' @section Parameters:
 #' * `folds` :: `integer(1)`\cr

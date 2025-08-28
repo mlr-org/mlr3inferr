@@ -12,7 +12,7 @@
 #'
 #' @section Point Estimation:
 #' When calling `$aggregate()` on a resample result obtained using this resample method, only the first `repeats_out` iterations will be used.
-#' See section "Point Estimatin" of [`MeasureCiConZ`][mlr_measures_ci.con_z].
+#' See section "Point Estimation" of [`MeasureCiConZ`][mlr_measures_ci.con_z].
 #' @section Parameters:
 #' * `repeats_in` :: `integer(1)`\cr
 #'   The inner repetitions.
