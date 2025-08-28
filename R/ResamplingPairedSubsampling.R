@@ -11,7 +11,7 @@
 #' See the `$unflatten(iter)` method to map the iterations to this nested structure.
 #'
 #' @section Point Estimation:
-#' When calling `$aggregate()` on a resample result obtained using this resample method, only the first `repeats_out` iterations will be used.
+#' When calling `$aggregate()` on a resample result obtained using this resampling method, only the first `repeats_out` iterations will be used.
 #' See section "Point Estimation" of [`MeasureCiConZ`][mlr_measures_ci.con_z].
 #' @section Parameters:
 #' * `repeats_in` :: `integer(1)`\cr

@@ -9,7 +9,7 @@ This implements the Nested CV resampling procedure by Bates et al. (2024).
 }
 \section{Point Estimation}{
 
-When calling \verb{$aggregate()} on a resample result obtained using this resample method, only
+When calling \verb{$aggregate()} on a resample result obtained using this resampling method, only
 the outer resampling iterations will be used, as they have a smaller bias.
 See section "Point Estimation" of \code{\link[=mlr_measures_ci.ncv]{MeasureCiNestedCV}}.
 }
