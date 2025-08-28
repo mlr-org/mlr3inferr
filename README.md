@@ -44,7 +44,7 @@ rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
 # 0.05 is also the default
 ci = msr("ci.holdout", "classif.acc", alpha = 0.05)
 rr$aggregate(ci)
-#>       classif.acc classif.acc.lower classif.acc.upper
+#>       classif.acc classif.acc.lower classif.acc.upper 
 #>         0.7391304         0.6347628         0.8434981
 ```
 
@@ -54,7 +54,7 @@ It is also possible to select the default inference method for a certain
 ``` r
 ci_default = msr("ci", "classif.acc")
 rr$aggregate(ci_default)
-#>       classif.acc classif.acc.lower classif.acc.upper
+#>       classif.acc classif.acc.lower classif.acc.upper 
 #>         0.7391304         0.6347628         0.8434981
 ```
 
@@ -88,9 +88,9 @@ Note that:
 :warning: **Different point estimates for the same measure**
 
 In general, the point estimate of `$aggregate(msr("ci", <key>))` will
-**not** always exactly identical to the point estimate of
+**not** always be exactly identical to the point estimate of
 `$aggregate(msr(<key>))`. This is because the point estimation for the
-former is defined by the inference method, and can for example, as is
+former is defined by the inference method, and can, for example, as is
 the case for nested cross-validation, contain a bias correction term, or
 use a different aggregation method. This is demonstrated in the example
 below.

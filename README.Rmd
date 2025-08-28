@@ -87,8 +87,8 @@ Note that:
 
 :warning: **Different point estimates for the same measure**
 
-In general, the point estimate of `$aggregate(msr("ci", <key>))` will **not** always exactly identical to the point estimate of `$aggregate(msr(<key>))`.
-This is because the point estimation for the former is defined by the inference method, and can for example, as is the case for nested cross-validation, contain a bias correction term, or use a different aggregation method.
+In general, the point estimate of `$aggregate(msr("ci", <key>))` will **not** always be exactly identical to the point estimate of `$aggregate(msr(<key>))`.
+This is because the point estimation for the former is defined by the inference method, and can, for example, as is the case for nested cross-validation, contain a bias correction term, or use a different aggregation method.
 This is demonstrated in the example below.
 
 ```{r}
