@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Inference on the Generalization Error • mlr3inferr</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
@@ -33,7 +32,7 @@
 
     <a class="navbar-brand me-2" href="index.html">mlr3inferr</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +42,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html"><span class="fa fa-file-alt"></span> Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://mlr3book.mlr-org.com"><span class="fa fa-link"></span> mlr3book</a></li>
       </ul>
 <ul class="navbar-nav">
@@ -125,6 +125,14 @@
 <li>Not for every resampling method exists an inference method.</li>
 <li>There are combinations of datasets and learners, where inference methods can fail.</li>
 </ul>
+<p><span class="emoji" data-emoji="warning">⚠️</span> <strong>Different point estimates for the same measure</strong></p>
+<p>In general, the point estimate of <code>$aggregate(msr("ci", &lt;key&gt;))</code> will <strong>not</strong> always be exactly identical to the point estimate of <code>$aggregate(msr(&lt;key&gt;))</code>. This is because the point estimation for the former is defined by the inference method, and can, for example, as is the case for nested cross-validation, contain a bias correction term, or use a different aggregation method. This is demonstrated in the example below.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rr</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample</a></span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span>, <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.rpart"</span><span class="op">)</span>, <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">rsmp</a></span><span class="op">(</span><span class="st">"ncv"</span>, folds <span class="op">=</span> <span class="fl">5L</span>, repeats <span class="op">=</span> <span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">ce</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span></span>
+<span><span class="va">ci</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"ci"</span>, <span class="va">ce</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="va">ce</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="va">ci</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.06466667 0.06646667</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
@@ -139,10 +147,10 @@
 </h2>
 <table class="table">
 <colgroup>
-<col width="16%">
-<col width="26%">
-<col width="26%">
-<col width="29%">
+<col width="15%">
+<col width="32%">
+<col width="24%">
+<col width="27%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Key</th>
@@ -153,31 +161,31 @@
 <tbody>
 <tr class="odd">
 <td align="left">ci.con_z</td>
-<td align="left">Conservative-Z CI</td>
+<td align="left">Conservative-Z Interval</td>
 <td align="left">PairedSubsampling</td>
 <td align="left">false</td>
 </tr>
 <tr class="even">
 <td align="left">ci.cor_t</td>
-<td align="left">Corrected-T CI</td>
+<td align="left">Corrected-T Interval</td>
 <td align="left">Subsampling</td>
 <td align="left">false</td>
 </tr>
 <tr class="odd">
 <td align="left">ci.holdout</td>
-<td align="left">Holdout CI</td>
+<td align="left">Holdout Interval</td>
 <td align="left">Holdout</td>
 <td align="left">yes</td>
 </tr>
 <tr class="even">
 <td align="left">ci.ncv</td>
-<td align="left">Nested CV CI</td>
+<td align="left">Nested CV Interval</td>
 <td align="left">NestedCV</td>
 <td align="left">yes</td>
 </tr>
 <tr class="odd">
 <td align="left">ci.wald_cv</td>
-<td align="left">Naive CV CI</td>
+<td align="left">Wald CV Interval</td>
 <td align="left">CV, LOO</td>
 <td align="left">yes</td>
 </tr>
@@ -188,15 +196,15 @@
 <h2 id="citing-mlr3">Citing mlr3<a class="anchor" aria-label="anchor" href="#citing-mlr3"></a>
 </h2>
 <p>If you use mlr3inferr, please cite our paper:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="sc">@</span>misc{kuempelfischer2024ciforge,</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>      title<span class="ot">=</span>{Constructing Confidence Intervals <span class="cf">for</span> <span class="st">'the'</span> Generalization Error <span class="sc">--</span> a Comprehensive Benchmark Study},</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>      author<span class="ot">=</span>{Hannah Schulz<span class="sc">-</span>Kümpel and Sebastian Fischer and Thomas Nagler and Anne<span class="sc">-</span>Laure Boulesteix and Bernd Bischl and Roman Hornung},</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>      year<span class="ot">=</span>{<span class="dv">2024</span>},</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>      eprint<span class="ot">=</span>{<span class="fl">2409.18836</span>},</span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>      archivePrefix<span class="ot">=</span>{arXiv},</span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>      primaryClass<span class="ot">=</span>{stat.ML},</span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>      url<span class="ot">=</span>{https<span class="sc">:</span><span class="er">//</span>arxiv.org<span class="sc">/</span>abs<span class="sc">/</span><span class="fl">2409.18836</span>},</span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="sc">@</span>misc{kuempelfischer2024ciforge,</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>      title<span class="ot">=</span>{Constructing Confidence Intervals <span class="cf">for</span> <span class="st">'the'</span> Generalization Error <span class="sc">--</span> a Comprehensive Benchmark Study},</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>      author<span class="ot">=</span>{Hannah Schulz<span class="sc">-</span>Kümpel and Sebastian Fischer and Thomas Nagler and Anne<span class="sc">-</span>Laure Boulesteix and Bernd Bischl and Roman Hornung},</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>      year<span class="ot">=</span>{<span class="dv">2024</span>},</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>      eprint<span class="ot">=</span>{<span class="fl">2409.18836</span>},</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>      archivePrefix<span class="ot">=</span>{arXiv},</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>      primaryClass<span class="ot">=</span>{stat.ML},</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>      url<span class="ot">=</span>{https<span class="sc">:</span><span class="er">//</span>arxiv.org<span class="sc">/</span>abs<span class="sc">/</span><span class="fl">2409.18836</span>},</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
@@ -238,8 +246,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Sebastian Fischer <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-9609-3197" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Hannah Schulz-Kümpel <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-3972-8392" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Sebastian Fischer <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-9609-3197" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Hannah Schulz-Kümpel <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-3972-8392" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -262,7 +270,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
