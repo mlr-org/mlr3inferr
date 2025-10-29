@@ -132,7 +132,3 @@ ResamplingNestedCV = R6::R6Class("ResamplingNestedCV",
 
 #' @include aaa.R
 resamplings[["ncv"]] = ResamplingNestedCV
-resamplings[["nested_cv"]] = function() {
-  .Deprecated("Please use key 'ncv' from now on.")
-  ResamplingNestedCV$new()
-}
