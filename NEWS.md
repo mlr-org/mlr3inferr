@@ -1,4 +1,7 @@
-# mlr3inferr (development version)
+# 0.2.1
+
+* Compatibility with upcoming `mlr3` release.
+
 
 # 0.2.0
 
