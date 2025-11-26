@@ -65,7 +65,7 @@ MeasureAbstractCi = R6Class("MeasureAbstractCi",
         assert(
           check_class(measure, "Measure"),
           check_false(inherits(measure, "MeasureCi")),
-          if (packageVersion("mlr3") >= "1.3.0") "obs_loss" %in% measure$properties else check_function(measure$obs_loss),
+          if (utils::packageVersion("mlr3") >= "1.3.0") "obs_loss" %in% measure$properties else check_function(measure$obs_loss),
           combine = "and",
           .var.name = "Argument measure must be a scalar Measure with a pointwise loss function (has $obs_loss field)"
         )
