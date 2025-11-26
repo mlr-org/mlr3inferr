@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="index.html">mlr3inferr</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,13 +97,13 @@
 <span><span class="co"># 0.05 is also the default</span></span>
 <span><span class="va">ci</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"ci.holdout"</span>, <span class="st">"classif.acc"</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="va">ci</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       classif.acc classif.acc.lower classif.acc.upper</span></span>
+<span><span class="co">#&gt;       classif.acc classif.acc.lower classif.acc.upper </span></span>
 <span><span class="co">#&gt;         0.7391304         0.6347628         0.8434981</span></span></code></pre></div>
 <p>It is also possible to select the default inference method for a certain <code>Resampling</code> method using <code>msr("ci")</code></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ci_default</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"ci"</span>, <span class="st">"classif.acc"</span><span class="op">)</span></span>
 <span><span class="va">rr</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span><span class="va">ci_default</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       classif.acc classif.acc.lower classif.acc.upper</span></span>
+<span><span class="co">#&gt;       classif.acc classif.acc.lower classif.acc.upper </span></span>
 <span><span class="co">#&gt;         0.7391304         0.6347628         0.8434981</span></span></code></pre></div>
 <p>With <a href="https://mlr3viz.mlr-org.com" class="external-link"><code>mlr3viz</code></a>, it is also possible to visualize multiple confidence intervals. Below, we compare a random forest with a decision tree and a featureless learner:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -125,7 +125,7 @@
 <li>There are combinations of datasets and learners, where inference methods can fail.</li>
 </ul>
 <p><span class="emoji" data-emoji="warning">⚠️</span> <strong>Different point estimates for the same measure</strong></p>
-<p>In general, the point estimate of <code>$aggregate(msr("ci", &lt;key&gt;))</code> will <strong>not</strong> always exactly identical to the point estimate of <code>$aggregate(msr(&lt;key&gt;))</code>. This is because the point estimation for the former is defined by the inference method, and can for example, as is the case for nested cross-validation, contain a bias correction term, or use a different aggregation method. This is demonstrated in the example below.</p>
+<p>In general, the point estimate of <code>$aggregate(msr("ci", &lt;key&gt;))</code> will <strong>not</strong> always be exactly identical to the point estimate of <code>$aggregate(msr(&lt;key&gt;))</code>. This is because the point estimation for the former is defined by the inference method, and can, for example, as is the case for nested cross-validation, contain a bias correction term, or use a different aggregation method. This is demonstrated in the example below.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rr</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample</a></span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span>, <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.rpart"</span><span class="op">)</span>, <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">rsmp</a></span><span class="op">(</span><span class="st">"ncv"</span>, folds <span class="op">=</span> <span class="fl">5L</span>, repeats <span class="op">=</span> <span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">ce</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span></span>
@@ -261,7 +261,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
