@@ -84,5 +84,5 @@ ci_ho
 rr = resample(tsk("sonar"), lrn("classif.featureless"), rsmp("holdout"))
 rr$aggregate(ci_ho)
 #>       classif.acc classif.acc.lower classif.acc.upper 
-#>         0.5217391         0.4030112         0.6404670 
+#>         0.5507246         0.4324975         0.6689518 
 ```
