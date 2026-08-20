@@ -6,7 +6,7 @@
 \alias{mlr3inferr-package}
 \title{mlr3inferr: Inference on the Generalization Error}
 \description{
-\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+\if{html}{\figure{logo.svg}{options: style='float: right' alt='logo' width='120'}}
 
 Confidence interval and resampling methods for inference on the generalization error.
 }
@@ -24,6 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Sebastian Fischer \email{sebf.fischer@gmail.com} (\href{https://orcid.org/0000-0002-9609-3197}{ORCID})
   \item Hannah Schulz-Kümpel \email{hannah.kuempel@stat.uni-muenchen.de} (\href{https://orcid.org/0000-0003-3972-8392}{ORCID})
 }
 

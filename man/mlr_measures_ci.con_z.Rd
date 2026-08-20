@@ -31,59 +31,62 @@ Nadeau, Claude, Bengio, Yoshua (1999).
 \emph{Advances in neural information processing systems}, \bold{12}.
 }
 \section{Super classes}{
-\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{mlr3inferr::MeasureAbstractCi}} -> \code{MeasureCiConZ}
+\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{MeasureAbstractCi}} -> \code{MeasureCiConZ}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-MeasureCiConZ-new}{\code{MeasureCiConZ$new()}}
-\item \href{#method-MeasureCiConZ-clone}{\code{MeasureCiConZ$clone()}}
+  \itemize{
+    \item \href{#method-MeasureCiConZ-initialize}{\code{MeasureCiConZ$new()}}
+    \item \href{#method-MeasureCiConZ-clone}{\code{MeasureCiConZ$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3inferr" data-topic="MeasureAbstractCi" data-id="aggregate"><a href='../../mlr3inferr/html/MeasureAbstractCi.html#method-MeasureAbstractCi-aggregate'><code>mlr3inferr::MeasureAbstractCi$aggregate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="obs_loss"><a href='../../mlr3/html/Measure.html#method-Measure-obs_loss'><code>mlr3::Measure$obs_loss()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3inferr" data-topic="MeasureAbstractCi" data-id="aggregate"><a href='../../mlr3inferr/html/MeasureAbstractCi.html#method-MeasureAbstractCi-aggregate'><code>MeasureAbstractCi$aggregate()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-MeasureCiConZ-new"></a>}}
-\if{latex}{\out{\hypertarget{method-MeasureCiConZ-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureCiConZ$new(measure)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-MeasureCiConZ-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-MeasureCiConZ-initialize}{}}}
+\subsection{\code{MeasureCiConZ$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MeasureCiConZ$new(measure)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}} or \code{character(1)})\cr
+A measure of ID of a measure.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}} or \code{character(1)})\cr
-A measure of ID of a measure.}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MeasureCiConZ-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-MeasureCiConZ-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureCiConZ$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{MeasureCiConZ$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MeasureCiConZ$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

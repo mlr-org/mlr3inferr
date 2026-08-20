@@ -8,7 +8,7 @@
 Paired Subsampling to enable inference on the generalization error.
 }
 \details{
-The first \code{repeats_in} iterations are a standard \code{\link[mlr3:mlr_resamplings_subsampling]{ResamplingSubsampling}}
+The first \code{repeats_in} iterations are a standard \code{\link[mlr3:ResamplingSubsampling]{ResamplingSubsampling}}
 and should be used to obtain a point estimate of the generalization error.
 The remaining iterations should be used to estimate the standard error.
 Here, the data is divided \code{repeats_out} times into two equally sized disjunct subsets, to each of which subsampling
@@ -46,48 +46,48 @@ Nadeau, Claude, Bengio, Yoshua (1999).
 \code{\link[mlr3:Resampling]{mlr3::Resampling}} -> \code{ResamplingPairedSubsampling}
 }
 \section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{iters}}{(\code{integer(1)})\cr
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{iters}}{(\code{integer(1)})\cr
 The total number of resampling iterations.}
-}
-\if{html}{\out{</div>}}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-ResamplingPairedSubsampling-new}{\code{ResamplingPairedSubsampling$new()}}
-\item \href{#method-ResamplingPairedSubsampling-unflatten}{\code{ResamplingPairedSubsampling$unflatten()}}
-\item \href{#method-ResamplingPairedSubsampling-clone}{\code{ResamplingPairedSubsampling$clone()}}
+  \itemize{
+    \item \href{#method-ResamplingPairedSubsampling-initialize}{\code{ResamplingPairedSubsampling$new()}}
+    \item \href{#method-ResamplingPairedSubsampling-unflatten}{\code{ResamplingPairedSubsampling$unflatten()}}
+    \item \href{#method-ResamplingPairedSubsampling-clone}{\code{ResamplingPairedSubsampling$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="format"><a href='../../mlr3/html/Resampling.html#method-Resampling-format'><code>mlr3::Resampling$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="help"><a href='../../mlr3/html/Resampling.html#method-Resampling-help'><code>mlr3::Resampling$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="instantiate"><a href='../../mlr3/html/Resampling.html#method-Resampling-instantiate'><code>mlr3::Resampling$instantiate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="print"><a href='../../mlr3/html/Resampling.html#method-Resampling-print'><code>mlr3::Resampling$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="test_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-test_set'><code>mlr3::Resampling$test_set()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="train_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-train_set'><code>mlr3::Resampling$train_set()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="format"><a href='../../mlr3/html/Resampling.html#method-Resampling-format'><code>mlr3::Resampling$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="help"><a href='../../mlr3/html/Resampling.html#method-Resampling-help'><code>mlr3::Resampling$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="instantiate"><a href='../../mlr3/html/Resampling.html#method-Resampling-instantiate'><code>mlr3::Resampling$instantiate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="print"><a href='../../mlr3/html/Resampling.html#method-Resampling-print'><code>mlr3::Resampling$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="test_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-test_set'><code>mlr3::Resampling$test_set()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="train_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-train_set'><code>mlr3::Resampling$train_set()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ResamplingPairedSubsampling-new"></a>}}
-\if{latex}{\out{\hypertarget{method-ResamplingPairedSubsampling-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResamplingPairedSubsampling$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-ResamplingPairedSubsampling-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-ResamplingPairedSubsampling-initialize}{}}}
+\subsection{\code{ResamplingPairedSubsampling$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ResamplingPairedSubsampling$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResamplingPairedSubsampling-unflatten"></a>}}
 \if{latex}{\out{\hypertarget{method-ResamplingPairedSubsampling-unflatten}{}}}
-\subsection{Method \code{unflatten()}}{
-Unflatten the resampling iteration into a more informative representation:
+\subsection{\code{ResamplingPairedSubsampling$unflatten()}}{
+  Unflatten the resampling iteration into a more informative representation:
 \itemize{
 \item \code{inner}: The subsampling iteration
 \item \code{outer}: \code{NA} for the first \code{repeats_in} iterations. Otherwise it indicates
@@ -96,37 +96,41 @@ the outer iteration of the paired subsamplings.
 Otherwise it indicates whether the subsampling is applied to the first or second partition
 Of the two disjoint halfs.
 }
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResamplingPairedSubsampling$unflatten(iter)}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ResamplingPairedSubsampling$unflatten(iter)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{iter}}{(\code{integer(1)})\cr
+Resampling iteration.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{list(outer, partition, inner)}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{iter}}{(\code{integer(1)})\cr
-Resampling iteration.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-\code{list(outer, partition, inner)}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResamplingPairedSubsampling-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-ResamplingPairedSubsampling-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResamplingPairedSubsampling$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{ResamplingPairedSubsampling$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ResamplingPairedSubsampling$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

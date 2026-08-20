@@ -1,6 +1,6 @@
 Package: mlr3inferr
 Title: Inference on the Generalization Error
-Version: 0.2.1.9000
+Version: 0.2.2
 Authors@R: c(
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-9609-3197")),
@@ -32,7 +32,6 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.2.9000
 Collate:
     'MeasureAbstractCi.R'
     'aaa.R'
@@ -46,3 +45,4 @@ Collate:
     'ResamplingPairedSubsampling.R'
     'bibentries.R'
     'zzz.R'
+Config/roxygen2/version: 8.0.0
