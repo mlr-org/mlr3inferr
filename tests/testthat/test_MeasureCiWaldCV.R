@@ -6,10 +6,13 @@ test_that("basic", {
 })
 
 test_that("aggr and CI point estimate agree", {
+  withr::local_seed(1)
+  # The CI point estimate is the mean over all observations, while the standard aggregation
+  # averages the per-fold scores. These only coincide when all folds have the same size, so we
+  # choose the number of folds such that it divides the number of observations (208 = 4 * 52).
   task = tsk("sonar")
-  rr = resample(task, lrn("classif.featureless"), rsmp("cv", folds = 3))
+  rr = resample(task, lrn("classif.featureless"), rsmp("cv", folds = 4))
   ci = rr$aggregate(msr("ci", "classif.acc"))
   aggr = rr$aggregate(msr("classif.acc"))
-  # there is some difference due to how we do the aggregation.
-  expect_equal(ci[[1L]], aggr[[1L]], tolerance = 0.001)
+  expect_equal(ci[[1L]], aggr[[1L]])
 })
