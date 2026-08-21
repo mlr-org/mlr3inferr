@@ -59,7 +59,7 @@ sqrt to go from mse to rmse).
 
 ### Public methods
 
-- [`MeasureAbstractCi$new()`](#method-MeasureAbstractCi-new)
+- [`MeasureAbstractCi$new()`](#method-MeasureAbstractCi-initialize)
 
 - [`MeasureAbstractCi$aggregate()`](#method-MeasureAbstractCi-aggregate)
 
@@ -69,12 +69,13 @@ Inherited methods
 
 - [`mlr3::Measure$format()`](https://mlr3.mlr-org.com/reference/Measure.html#method-format)
 - [`mlr3::Measure$help()`](https://mlr3.mlr-org.com/reference/Measure.html#method-help)
+- [`mlr3::Measure$obs_loss()`](https://mlr3.mlr-org.com/reference/Measure.html#method-obs_loss)
 - [`mlr3::Measure$print()`](https://mlr3.mlr-org.com/reference/Measure.html#method-print)
 - [`mlr3::Measure$score()`](https://mlr3.mlr-org.com/reference/Measure.html#method-score)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `MeasureAbstractCi$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -141,7 +142,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method [`aggregate()`](https://rdrr.io/r/stats/aggregate.html)
+### `MeasureAbstractCi$aggregate()`
 
 Obtain a point estimate, as well as lower and upper CI boundary.
 
@@ -162,7 +163,7 @@ named `numeric(3)`
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `MeasureAbstractCi$clone()`
 
 The objects of this class are cloneable with this method.
 

@@ -34,14 +34,14 @@ Bates, Stephen, Hastie, Trevor, Tibshirani, Robert (2024).
 ## Super classes
 
 [`mlr3::Measure`](https://mlr3.mlr-org.com/reference/Measure.html) -\>
-[`mlr3inferr::MeasureAbstractCi`](https://mlr3inferr.mlr-org.com/reference/mlr_measures_abstract_ci.md)
+[`MeasureAbstractCi`](https://mlr3inferr.mlr-org.com/reference/mlr_measures_abstract_ci.md)
 -\> `MeasureCiNestedCV`
 
 ## Methods
 
 ### Public methods
 
-- [`MeasureCiNestedCV$new()`](#method-MeasureCiNestedCV-new)
+- [`MeasureCiNestedCV$new()`](#method-MeasureCiNestedCV-initialize)
 
 - [`MeasureCiNestedCV$clone()`](#method-MeasureCiNestedCV-clone)
 
@@ -49,13 +49,14 @@ Inherited methods
 
 - [`mlr3::Measure$format()`](https://mlr3.mlr-org.com/reference/Measure.html#method-format)
 - [`mlr3::Measure$help()`](https://mlr3.mlr-org.com/reference/Measure.html#method-help)
+- [`mlr3::Measure$obs_loss()`](https://mlr3.mlr-org.com/reference/Measure.html#method-obs_loss)
 - [`mlr3::Measure$print()`](https://mlr3.mlr-org.com/reference/Measure.html#method-print)
 - [`mlr3::Measure$score()`](https://mlr3.mlr-org.com/reference/Measure.html#method-score)
-- [`mlr3inferr::MeasureAbstractCi$aggregate()`](https://mlr3inferr.mlr-org.com/reference/MeasureAbstractCi.html#method-aggregate)
+- [`MeasureAbstractCi$aggregate()`](https://mlr3inferr.mlr-org.com/reference/MeasureAbstractCi.html#method-aggregate)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `MeasureCiNestedCV$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -74,7 +75,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `MeasureCiNestedCV$clone()`
 
 The objects of this class are cloneable with this method.
 

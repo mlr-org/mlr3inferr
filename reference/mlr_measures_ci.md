@@ -14,36 +14,37 @@ Only those from
 ## Super classes
 
 [`mlr3::Measure`](https://mlr3.mlr-org.com/reference/Measure.html) -\>
-[`mlr3inferr::MeasureAbstractCi`](https://mlr3inferr.mlr-org.com/reference/mlr_measures_abstract_ci.md)
+[`MeasureAbstractCi`](https://mlr3inferr.mlr-org.com/reference/mlr_measures_abstract_ci.md)
 -\> `Measure`
 
 ## Methods
 
 ### Public methods
 
-- [`MeasureCi$new()`](#method-Measure-new)
+- [`Measure$new()`](#method-Measure-initialize)
 
-- [`MeasureCi$aggregate()`](#method-Measure-aggregate)
+- [`Measure$aggregate()`](#method-Measure-aggregate)
 
-- [`MeasureCi$clone()`](#method-Measure-clone)
+- [`Measure$clone()`](#method-Measure-clone)
 
 Inherited methods
 
 - [`mlr3::Measure$format()`](https://mlr3.mlr-org.com/reference/Measure.html#method-format)
 - [`mlr3::Measure$help()`](https://mlr3.mlr-org.com/reference/Measure.html#method-help)
+- [`mlr3::Measure$obs_loss()`](https://mlr3.mlr-org.com/reference/Measure.html#method-obs_loss)
 - [`mlr3::Measure$print()`](https://mlr3.mlr-org.com/reference/Measure.html#method-print)
 - [`mlr3::Measure$score()`](https://mlr3.mlr-org.com/reference/Measure.html#method-score)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `Measure$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
 
 #### Usage
 
-    MeasureCi$new(measure)
+    Measure$new(measure)
 
 #### Arguments
 
@@ -55,13 +56,13 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method [`aggregate()`](https://rdrr.io/r/stats/aggregate.html)
+### `Measure$aggregate()`
 
 Obtain a point estimate, as well as lower and upper CI boundary.
 
 #### Usage
 
-    MeasureCi$aggregate(rr)
+    Measure$aggregate(rr)
 
 #### Arguments
 
@@ -76,13 +77,13 @@ named `numeric(3)`
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `Measure$clone()`
 
 The objects of this class are cloneable with this method.
 
 #### Usage
 
-    MeasureCi$clone(deep = FALSE)
+    Measure$clone(deep = FALSE)
 
 #### Arguments
 

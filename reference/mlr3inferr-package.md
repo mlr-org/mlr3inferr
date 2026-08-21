@@ -20,5 +20,8 @@ Useful links:
 
 Authors:
 
+- Sebastian Fischer <sebf.fischer@gmail.com>
+  ([ORCID](https://orcid.org/0000-0002-9609-3197))
+
 - Hannah Schulz-Kümpel <hannah.kuempel@stat.uni-muenchen.de>
   ([ORCID](https://orcid.org/0000-0003-3972-8392))

@@ -53,7 +53,7 @@ error.” *Advances in neural information processing systems*, **12**.
 
 ### Public methods
 
-- [`ResamplingPairedSubsampling$new()`](#method-ResamplingPairedSubsampling-new)
+- [`ResamplingPairedSubsampling$new()`](#method-ResamplingPairedSubsampling-initialize)
 
 - [`ResamplingPairedSubsampling$unflatten()`](#method-ResamplingPairedSubsampling-unflatten)
 
@@ -70,7 +70,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `ResamplingPairedSubsampling$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -81,7 +81,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `unflatten()`
+### `ResamplingPairedSubsampling$unflatten()`
 
 Unflatten the resampling iteration into a more informative
 representation:
@@ -112,7 +112,7 @@ representation:
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `ResamplingPairedSubsampling$clone()`
 
 The objects of this class are cloneable with this method.
 

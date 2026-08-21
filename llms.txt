@@ -8,6 +8,7 @@ Package website: [release](https://mlr3inferr.mlr-org.com/) \|
 ## Installation
 
 ``` r
+
 # Install release from CRAN
 install.packages("mlr3inferr")
 # Install development version from GitHub
@@ -26,6 +27,7 @@ measure, to which we pass another
 determines the loss function.
 
 ``` r
+
 library(mlr3inferr)
 
 rr = resample(tsk("sonar"), lrn("classif.rpart"), rsmp("holdout"))
@@ -40,6 +42,7 @@ It is also possible to select the default inference method for a certain
 `Resampling` method using `msr("ci")`
 
 ``` r
+
 ci_default = msr("ci", "classif.acc")
 rr$aggregate(ci_default)
 #>       classif.acc classif.acc.lower classif.acc.upper 
@@ -51,6 +54,7 @@ visualize multiple confidence intervals. Below, we compare a random
 forest with a decision tree and a featureless learner:
 
 ``` r
+
 library(mlr3learners)
 library(mlr3viz)
 
@@ -84,6 +88,7 @@ use a different aggregation method. This is demonstrated in the example
 below.
 
 ``` r
+
 rr = resample(tsk("iris"), lrn("classif.rpart"), rsmp("ncv", folds = 5L, repeats = 20L))
 ce = msr("classif.ce")
 ci = msr("ci", ce)

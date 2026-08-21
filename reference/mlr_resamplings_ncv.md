@@ -41,7 +41,7 @@ Bates, Stephen, Hastie, Trevor, Tibshirani, Robert (2024).
 
 ### Public methods
 
-- [`ResamplingNestedCV$new()`](#method-ResamplingNestedCV-new)
+- [`ResamplingNestedCV$new()`](#method-ResamplingNestedCV-initialize)
 
 - [`ResamplingNestedCV$unflatten()`](#method-ResamplingNestedCV-unflatten)
 
@@ -58,7 +58,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `ResamplingNestedCV$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -69,7 +69,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `unflatten()`
+### `ResamplingNestedCV$unflatten()`
 
 Convert a resampling iteration to a more useful representation. For
 outer resampling iterations, `inner` is `NA`.
@@ -91,7 +91,7 @@ outer resampling iterations, `inner` is `NA`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `ResamplingNestedCV$clone()`
 
 The objects of this class are cloneable with this method.
 
