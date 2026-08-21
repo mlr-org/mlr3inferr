@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/mlr-org/mlr3inferr/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/mlr-org/mlr3inferr/blob/v0.2.2/DESCRIPTION)
 
 Fischer S, Schulz-Kümpel H (2026). *mlr3inferr: Inference on the
 Generalization Error*. R package version 0.2.2,
