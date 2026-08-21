@@ -45,40 +45,40 @@ to the transformation \code{measure$trafo} (e.g. sqrt to go from mse to rmse).
 \code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{MeasureAbstractCi}
 }
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{resamplings}}{(\code{character()})\cr
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{resamplings}}{(\code{character()})\cr
 On which resampling classes this method can operate.}
 
-\item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}})\cr}
-}
-\if{html}{\out{</div>}}
+    \item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}})\cr}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-MeasureAbstractCi-new}{\code{MeasureAbstractCi$new()}}
-\item \href{#method-MeasureAbstractCi-aggregate}{\code{MeasureAbstractCi$aggregate()}}
-\item \href{#method-MeasureAbstractCi-clone}{\code{MeasureAbstractCi$clone()}}
+  \itemize{
+    \item \href{#method-MeasureAbstractCi-initialize}{\code{MeasureAbstractCi$new()}}
+    \item \href{#method-MeasureAbstractCi-aggregate}{\code{MeasureAbstractCi$aggregate()}}
+    \item \href{#method-MeasureAbstractCi-clone}{\code{MeasureAbstractCi$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="obs_loss"><a href='../../mlr3/html/Measure.html#method-Measure-obs_loss'><code>mlr3::Measure$obs_loss()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-MeasureAbstractCi-new"></a>}}
-\if{latex}{\out{\hypertarget{method-MeasureAbstractCi-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureAbstractCi$new(
+\if{html}{\out{<a id="method-MeasureAbstractCi-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-MeasureAbstractCi-initialize}{}}}
+\subsection{\code{MeasureAbstractCi$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MeasureAbstractCi$new(
   measure = NULL,
   param_set = ps(),
   packages = character(),
@@ -87,77 +87,75 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
   delta_method = FALSE,
   requires_obs_loss = TRUE,
   man = NA
-)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}})\cr
+)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}})\cr
 The measure for which to calculate a confidence interval. Must have \verb{$obs_loss}.}
-
-\item{\code{param_set}}{(\code{\link[paradox:ParamSet]{ParamSet}})\cr
+      \item{\code{param_set}}{(\code{\link[paradox:ParamSet]{ParamSet}})\cr
 Set of hyperparameters.}
-
-\item{\code{packages}}{(\code{character()})\cr
+      \item{\code{packages}}{(\code{character()})\cr
 Set of required packages.
 A warning is signaled by the constructor if at least one of the packages is not installed,
 but loaded (not attached) later on-demand via \code{\link[=requireNamespace]{requireNamespace()}}.}
-
-\item{\code{resamplings}}{(\code{character()})\cr
+      \item{\code{resamplings}}{(\code{character()})\cr
 To which resampling classes this measure can be applied.}
-
-\item{\code{label}}{(\code{character(1)})\cr
+      \item{\code{label}}{(\code{character(1)})\cr
 Label for the new instance.}
-
-\item{\code{delta_method}}{(\code{logical(1)})\cr
+      \item{\code{delta_method}}{(\code{logical(1)})\cr
 Whether to use the delta method for measures (such RMSE) that have a trafo.}
-
-\item{\code{requires_obs_loss}}{(\code{logical(1)})\cr
+      \item{\code{requires_obs_loss}}{(\code{logical(1)})\cr
 Whether the inference method requires a pointwise loss function.}
-
-\item{\code{man}}{(\code{character(1)})\cr
+      \item{\code{man}}{(\code{character(1)})\cr
 Manual page.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
-\if{html}{\out{</div>}}
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MeasureAbstractCi-aggregate"></a>}}
 \if{latex}{\out{\hypertarget{method-MeasureAbstractCi-aggregate}{}}}
-\subsection{Method \code{aggregate()}}{
-Obtain a point estimate, as well as lower and upper CI boundary.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureAbstractCi$aggregate(rr)}\if{html}{\out{</div>}}
+\subsection{\code{MeasureAbstractCi$aggregate()}}{
+  Obtain a point estimate, as well as lower and upper CI boundary.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MeasureAbstractCi$aggregate(rr)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{rr}}{(\code{\link[mlr3:ResampleResult]{ResampleResult}})\cr
+The resample result.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    named \code{numeric(3)}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{rr}}{(\code{\link[mlr3:ResampleResult]{ResampleResult}})\cr
-The resample result.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-named \code{numeric(3)}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MeasureAbstractCi-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-MeasureAbstractCi-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureAbstractCi$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{MeasureAbstractCi$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MeasureAbstractCi$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

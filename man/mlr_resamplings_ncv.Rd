@@ -38,80 +38,84 @@ Bates, Stephen, Hastie, Trevor, Tibshirani, Robert (2024).
 \code{\link[mlr3:Resampling]{mlr3::Resampling}} -> \code{ResamplingNestedCV}
 }
 \section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{iters}}{(\code{integer(1)})\cr
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{iters}}{(\code{integer(1)})\cr
 The total number of resampling iterations.}
-}
-\if{html}{\out{</div>}}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-ResamplingNestedCV-new}{\code{ResamplingNestedCV$new()}}
-\item \href{#method-ResamplingNestedCV-unflatten}{\code{ResamplingNestedCV$unflatten()}}
-\item \href{#method-ResamplingNestedCV-clone}{\code{ResamplingNestedCV$clone()}}
+  \itemize{
+    \item \href{#method-ResamplingNestedCV-initialize}{\code{ResamplingNestedCV$new()}}
+    \item \href{#method-ResamplingNestedCV-unflatten}{\code{ResamplingNestedCV$unflatten()}}
+    \item \href{#method-ResamplingNestedCV-clone}{\code{ResamplingNestedCV$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="format"><a href='../../mlr3/html/Resampling.html#method-Resampling-format'><code>mlr3::Resampling$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="help"><a href='../../mlr3/html/Resampling.html#method-Resampling-help'><code>mlr3::Resampling$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="instantiate"><a href='../../mlr3/html/Resampling.html#method-Resampling-instantiate'><code>mlr3::Resampling$instantiate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="print"><a href='../../mlr3/html/Resampling.html#method-Resampling-print'><code>mlr3::Resampling$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="test_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-test_set'><code>mlr3::Resampling$test_set()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="train_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-train_set'><code>mlr3::Resampling$train_set()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="format"><a href='../../mlr3/html/Resampling.html#method-Resampling-format'><code>mlr3::Resampling$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="help"><a href='../../mlr3/html/Resampling.html#method-Resampling-help'><code>mlr3::Resampling$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="instantiate"><a href='../../mlr3/html/Resampling.html#method-Resampling-instantiate'><code>mlr3::Resampling$instantiate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="print"><a href='../../mlr3/html/Resampling.html#method-Resampling-print'><code>mlr3::Resampling$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="test_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-test_set'><code>mlr3::Resampling$test_set()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Resampling" data-id="train_set"><a href='../../mlr3/html/Resampling.html#method-Resampling-train_set'><code>mlr3::Resampling$train_set()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ResamplingNestedCV-new"></a>}}
-\if{latex}{\out{\hypertarget{method-ResamplingNestedCV-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResamplingNestedCV$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-ResamplingNestedCV-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-ResamplingNestedCV-initialize}{}}}
+\subsection{\code{ResamplingNestedCV$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ResamplingNestedCV$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResamplingNestedCV-unflatten"></a>}}
 \if{latex}{\out{\hypertarget{method-ResamplingNestedCV-unflatten}{}}}
-\subsection{Method \code{unflatten()}}{
-Convert a resampling iteration to a more useful representation.
+\subsection{\code{ResamplingNestedCV$unflatten()}}{
+  Convert a resampling iteration to a more useful representation.
 For outer resampling iterations, \code{inner} is \code{NA}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResamplingNestedCV$unflatten(iter)}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ResamplingNestedCV$unflatten(iter)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{iter}}{(\code{integer(1)})\cr
+The iteration.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{list(rep, outer, inner)}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{iter}}{(\code{integer(1)})\cr
-The iteration.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-\code{list(rep, outer, inner)}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResamplingNestedCV-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-ResamplingNestedCV-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResamplingNestedCV$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{ResamplingNestedCV$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{ResamplingNestedCV$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

@@ -37,59 +37,62 @@ Bates, Stephen, Hastie, Trevor, Tibshirani, Robert (2024).
 \emph{Journal of the American Statistical Association}, \bold{119}(546), 1434--1445.
 }
 \section{Super classes}{
-\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{mlr3inferr::MeasureAbstractCi}} -> \code{MeasureCiNestedCV}
+\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{MeasureAbstractCi}} -> \code{MeasureCiNestedCV}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-MeasureCiNestedCV-new}{\code{MeasureCiNestedCV$new()}}
-\item \href{#method-MeasureCiNestedCV-clone}{\code{MeasureCiNestedCV$clone()}}
+  \itemize{
+    \item \href{#method-MeasureCiNestedCV-initialize}{\code{MeasureCiNestedCV$new()}}
+    \item \href{#method-MeasureCiNestedCV-clone}{\code{MeasureCiNestedCV$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3inferr" data-topic="MeasureAbstractCi" data-id="aggregate"><a href='../../mlr3inferr/html/MeasureAbstractCi.html#method-MeasureAbstractCi-aggregate'><code>mlr3inferr::MeasureAbstractCi$aggregate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="obs_loss"><a href='../../mlr3/html/Measure.html#method-Measure-obs_loss'><code>mlr3::Measure$obs_loss()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3inferr" data-topic="MeasureAbstractCi" data-id="aggregate"><a href='../../mlr3inferr/html/MeasureAbstractCi.html#method-MeasureAbstractCi-aggregate'><code>MeasureAbstractCi$aggregate()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-MeasureCiNestedCV-new"></a>}}
-\if{latex}{\out{\hypertarget{method-MeasureCiNestedCV-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureCiNestedCV$new(measure)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-MeasureCiNestedCV-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-MeasureCiNestedCV-initialize}{}}}
+\subsection{\code{MeasureCiNestedCV$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MeasureCiNestedCV$new(measure)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}} or \code{character(1)})\cr
+A measure of ID of a measure.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}} or \code{character(1)})\cr
-A measure of ID of a measure.}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MeasureCiNestedCV-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-MeasureCiNestedCV-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureCiNestedCV$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{MeasureCiNestedCV$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MeasureCiNestedCV$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

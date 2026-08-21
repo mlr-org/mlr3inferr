@@ -22,80 +22,85 @@ rr$aggregate(msr("ci", "classif.acc"))
 rr$aggregate(msr("ci.holdout", "classif.acc"))
 }
 \section{Super classes}{
-\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{mlr3inferr::MeasureAbstractCi}} -> \code{Measure}
+\code{\link[mlr3:Measure]{mlr3::Measure}} -> \code{\link[mlr3inferr:MeasureAbstractCi]{MeasureAbstractCi}} -> \code{Measure}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-Measure-new}{\code{MeasureCi$new()}}
-\item \href{#method-Measure-aggregate}{\code{MeasureCi$aggregate()}}
-\item \href{#method-Measure-clone}{\code{MeasureCi$clone()}}
+  \itemize{
+    \item \href{#method-Measure-initialize}{\code{Measure$new()}}
+    \item \href{#method-Measure-aggregate}{\code{Measure$aggregate()}}
+    \item \href{#method-Measure-clone}{\code{Measure$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="format"><a href='../../mlr3/html/Measure.html#method-Measure-format'><code>mlr3::Measure$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="help"><a href='../../mlr3/html/Measure.html#method-Measure-help'><code>mlr3::Measure$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="obs_loss"><a href='../../mlr3/html/Measure.html#method-Measure-obs_loss'><code>mlr3::Measure$obs_loss()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="print"><a href='../../mlr3/html/Measure.html#method-Measure-print'><code>mlr3::Measure$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Measure" data-id="score"><a href='../../mlr3/html/Measure.html#method-Measure-score'><code>mlr3::Measure$score()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Measure-new"></a>}}
-\if{latex}{\out{\hypertarget{method-Measure-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureCi$new(measure)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-Measure-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-Measure-initialize}{}}}
+\subsection{\code{Measure$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Measure$new(measure)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}} or \code{character(1)})\cr
+A measure of ID of a measure.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{measure}}{(\code{\link[mlr3:Measure]{Measure}} or \code{character(1)})\cr
-A measure of ID of a measure.}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Measure-aggregate"></a>}}
 \if{latex}{\out{\hypertarget{method-Measure-aggregate}{}}}
-\subsection{Method \code{aggregate()}}{
-Obtain a point estimate, as well as lower and upper CI boundary.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureCi$aggregate(rr)}\if{html}{\out{</div>}}
+\subsection{\code{Measure$aggregate()}}{
+  Obtain a point estimate, as well as lower and upper CI boundary.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Measure$aggregate(rr)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{rr}}{(\code{\link[mlr3:ResampleResult]{ResampleResult}})\cr
+Resample result.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    named \code{numeric(3)}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{rr}}{(\code{\link[mlr3:ResampleResult]{ResampleResult}})\cr
-Resample result.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-named \code{numeric(3)}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Measure-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-Measure-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MeasureCi$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{Measure$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Measure$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }
